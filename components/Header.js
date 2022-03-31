@@ -8,7 +8,9 @@ function Header() {
         {/* Logo */}
 
         {/* Title */}
-        <p className="font-Dosis text-3xl cursor-pointer">Ghar Naksha</p>
+        <p className="font-Dosis text-3xl cursor-pointer text-blue-800">
+          Ghar Naksha
+        </p>
       </div>
 
       {/* Header Center */}
@@ -26,13 +28,13 @@ function Header() {
       {/* Header Right */}
       <div>
         <ul className="flex items-center space-x-8 font-Poppins font-bold text-gray-600">
-          <li className="cursor-pointer hover:bg-blue-500 px-2 py-1 rounded-lg hover:text-white">
+          <li className="cursor-pointer hover:bg-blue-500 px-2 py-1 rounded-lg hover:text-white hover:shadow-md hover:shadow-gray-700 transform transition duration-200">
             Explore
           </li>
-          <li className="cursor-pointer hover:bg-blue-500 px-2 py-1 rounded-lg hover:text-white">
+          <li className="cursor-pointer hover:bg-blue-500 px-2 py-1 rounded-lg hover:text-white hover:shadow-md hover:shadow-gray-700 transform transition duration-200">
             Resources
           </li>
-          <li className="cursor-pointer hover:bg-blue-500 px-2 py-1 rounded-lg hover:text-white">
+          <li className="cursor-pointer hover:bg-blue-500 px-2 py-1 rounded-lg hover:text-white hover:shadow-md hover:shadow-gray-900 transform transition duration-200">
             Create
           </li>
           <li className="cursor-pointer">

@@ -4,11 +4,11 @@ import img1 from "../img/imageOne.jpg";
 
 function Post({ name, img }) {
   return (
-    <div className="my-4 shadow-gray-600 shadow-lg rounded-lg px-2 py-1.5">
+    <div className="my-4 shadow-gray-600 shadow-lg rounded-lg px-2 py-1.5 cursor-pointer">
       {/* Post Header */}
       <div className="flex align-center justify-between mb-[2px]">
         <div>
-          <UserCircleIcon className="h-8" />
+          <UserCircleIcon className="h-8 text-gray-700" />
         </div>
         <div className="">
           <p className="font-Poppins">{name}</p>
