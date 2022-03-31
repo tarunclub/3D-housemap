@@ -66,7 +66,7 @@ function Footer() {
           <p className="font-Dosis text-3xl cursor-pointer text-white">
             Ghar Naksha
           </p>
-          <p className="text-white mt-5 text-lg">
+          <p className="text-white mt-5 text-lg font-Poppins">
             Buy, sell, and discover exclusive digital ground maps.
           </p>
         </div>
