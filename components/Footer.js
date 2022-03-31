@@ -1,6 +1,6 @@
 import Image from "next/image";
 import instagram from "../icons/instagram.png";
-import twitter from "../icons/twitter02.png";
+import twitter from "../icons/twitter.png";
 import linkedin from "../icons/linkedin.png";
 
 function Footer() {
@@ -26,7 +26,7 @@ function Footer() {
               />
             </div>
             <div>
-              <button className="border-[1px] border-gray-400 text-blue-600 px-8 py-2 text-md rounded-lg font-Poppins font-semibold hover:bg-blue-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600 ml-4">
+              <button className="border-[1px] border-gray-400 text-blue-500 bg-white px-8 py-2 text-md rounded-lg font-Poppins font-semibold hover:bg-blue-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600 ml-4">
                 Signup
               </button>
             </div>
