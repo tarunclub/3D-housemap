@@ -2,7 +2,7 @@ import { SearchIcon, UserCircleIcon } from "@heroicons/react/solid";
 
 function Header() {
   return (
-    <header className="flex items-center justify-between m-2 px-4 shadow-md pb-3.5 pt-1">
+    <header className="flex items-center justify-between my-2 px-4 shadow-md pb-3.5 pt-1 ">
       {/* Header Left */}
       <div className="flex">
         {/* Logo */}
@@ -25,11 +25,17 @@ function Header() {
 
       {/* Header Right */}
       <div>
-        <ul className="flex items-center space-x-8 font-Poppins">
-          <li className="cursor-pointer font-bold">Explore</li>
-          <li className="cursor-pointer font-bold">Resources</li>
-          <li className="cursor-pointer font-bold">Create</li>
-          <li className="cursor-pointer font-bold">
+        <ul className="flex items-center space-x-8 font-Poppins font-bold text-gray-600">
+          <li className="cursor-pointer hover:bg-blue-500 px-2 py-1 rounded-lg hover:text-white">
+            Explore
+          </li>
+          <li className="cursor-pointer hover:bg-blue-500 px-2 py-1 rounded-lg hover:text-white">
+            Resources
+          </li>
+          <li className="cursor-pointer hover:bg-blue-500 px-2 py-1 rounded-lg hover:text-white">
+            Create
+          </li>
+          <li className="cursor-pointer">
             <UserCircleIcon className="h-8" />
           </li>
         </ul>

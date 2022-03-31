@@ -9,8 +9,9 @@ module.exports = {
         Dosis: ["Dosis", "poppins"],
         Poppins: ["Poppins", "Dosis"],
         Ubuntu: ["Ubuntu", "Poppins"],
+        Nunito: ["Nunito", "Poppins"],
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar-hide")],
 };
