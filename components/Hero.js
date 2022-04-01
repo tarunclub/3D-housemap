@@ -78,7 +78,7 @@ function Body() {
           <p className="text-3xl font-Nunito text-gray-700">Collections</p>
         </div>
         <div className="flex col-2 mt-[30px] space-x-8 mx-10">
-          <Post name="Tarun" img={nft5} />
+          <Post name="" img={nft5} />
           <Post img={nft6} />
           <Post img={nft7} />
         </div>
