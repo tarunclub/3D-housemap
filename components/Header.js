@@ -1,9 +1,12 @@
 import { SearchIcon, UserCircleIcon } from "@heroicons/react/solid";
 import { useSession, signOut, signIn } from "next-auth/react";
+import Link from "next/link";
+import { useRecoilState } from "recoil";
+import { modalState } from "../atoms/modalAtom";
 
 function Header() {
   const { data: session } = useSession();
-
+  const [open, setOpen] = useRecoilState(modalState);
   return (
     <header className="flex items-center justify-between my-2 px-4 shadow-md pb-3.5 pt-1 ">
       {/* Header Left */}
@@ -12,7 +15,9 @@ function Header() {
 
         {/* Title */}
         <p className="font-Dosis text-3xl cursor-pointer text-blue-800">
-          Ghar Naksha
+          <Link href="/">
+            <a>Ghar Naksha</a>
+          </Link>
         </p>
       </div>
 
@@ -38,7 +43,9 @@ function Header() {
             Resources
           </div>
           <div className="cursor-pointer hover:bg-blue-500 px-2 py-1 rounded-lg hover:text-white hover:shadow-md hover:shadow-gray-900 transform transition duration-200">
-            Create
+            <Link href="/create">
+              <a>Create</a>
+            </Link>
           </div>
           {session ? (
             <div className="cursor-pointer flex items-center">
