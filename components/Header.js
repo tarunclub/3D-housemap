@@ -49,7 +49,14 @@ function Header() {
           </div>
           {session ? (
             <div className="cursor-pointer flex items-center">
-              <img src={session.user.image} className="rounded-full h-9 w-9" />
+              <Link href="/user">
+                <a>
+                  <img
+                    src={session.user.image}
+                    className="rounded-full h-9 w-9"
+                  />
+                </a>
+              </Link>
 
               <div className="ml-4">
                 <button

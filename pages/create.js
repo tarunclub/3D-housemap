@@ -13,6 +13,7 @@ import {
 } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { ref, getDownloadURL, uploadString } from "firebase/storage";
+import Head from "next/head";
 
 function create() {
   const { data: session } = useSession();
@@ -24,6 +25,7 @@ function create() {
   const nameRef = useRef(null);
   const supplyRef = useRef(null);
   const priceRef = useRef(null);
+
   const addImageToPost = (e) => {
     const reader = new FileReader();
     if (e.target.files[0]) {
@@ -74,6 +76,9 @@ function create() {
 
   return (
     <div className="flex flex-col">
+      <Head>
+        <title>create</title>
+      </Head>
       <Header />
       <div className="flex flex-col items-center my-8">
         <p className="text-3xl font-Poppins font-extrabold mb-1">
@@ -123,7 +128,7 @@ function create() {
             <div className="border-[2px] border-dotted px-4 py-1">
               <input
                 type="text"
-                className="w-[380px] text-sm"
+                className="w-[380px] text-sm outline-none"
                 placeholder="Item name"
                 ref={nameRef}
               />
@@ -176,7 +181,7 @@ function create() {
 
         <div>
           <button
-            disabled={!selectedFile}
+            disabled={!selectedFile || !session}
             className="border-[1px] border-gray-400 text-blue-600 px-8 py-2 text-md rounded-lg font-Poppins font-semibold hover:bg-blue-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600"
             onClick={uploadPost}
           >

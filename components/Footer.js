@@ -60,6 +60,7 @@ function Footer() {
         </div>
       </section>
       <hr></hr>
+
       {/* Bottom Section */}
       <section className="flex flex-row justify-between mx-10 mt-5">
         <div>
@@ -71,35 +72,72 @@ function Footer() {
           </p>
         </div>
         <div>
-          <p className="text-lg font-Poppins font-bold text-white">
+          <p className="text-lg font-Poppins font-bold text-white cursor-pointer">
             My Account
           </p>
           <div className="space-y-3 mt-3">
-            <p className="text-md text-white font-Poppins">Lorem, ipsum.</p>
-            <p className="text-md text-white font-Poppins">Lorem, ipsum.</p>
-            <p className="text-md text-white font-Poppins">Lorem, ipsum.</p>
-            <p className="text-md text-white font-Poppins">Lorem, ipsum.</p>
-            <p className="text-md text-white font-Poppins">Lorem, ipsum.</p>
+            <p className="text-md text-white font-Poppins cursor-pointer">
+              Lorem, ipsum.
+            </p>
+            <p className="text-md text-white font-Poppins cursor-pointer">
+              Lorem, ipsum.
+            </p>
+            <p className="text-md text-white font-Poppins cursor-pointer">
+              Lorem, ipsum.
+            </p>
+            <p className="text-md text-white font-Poppins cursor-pointer">
+              Lorem, ipsum.
+            </p>
+            <p className="text-md text-white font-Poppins cursor-pointer">
+              Lorem, ipsum.
+            </p>
           </div>
         </div>
         <div>
-          <p className="text-lg font-Poppins font-bold text-white">Resources</p>
+          <p className="text-lg font-Poppins font-bold text-white cursor-pointer">
+            Resources
+          </p>
           <div className="space-y-3 mt-3">
-            <p className="text-md text-white font-Poppins">Lorem, ipsum.</p>
-            <p className="text-md text-white font-Poppins">Lorem, ipsum.</p>
-            <p className="text-md text-white font-Poppins">Lorem, ipsum.</p>
-            <p className="text-md text-white font-Poppins">Lorem, ipsum.</p>
-            <p className="text-md text-white font-Poppins">Lorem, ipsum.</p>
+            <p className="text-md text-white font-Poppins cursor-pointer">
+              Lorem, ipsum.
+            </p>
+            <p
+              cursor-pointerp
+              className="text-md text-white font-Poppins cursor-pointer"
+            >
+              Lorem, ipsum.
+            </p>
+            <p className="text-md text-white font-Poppins cursor-pointer">
+              Lorem, ipsum.
+            </p>
+            <p className="text-md text-white font-Poppins cursor-pointer">
+              Lorem, ipsum.
+            </p>
+            <p className="text-md text-white font-Poppins cursor-pointer">
+              Lorem, ipsum.
+            </p>
           </div>
         </div>
         <div>
-          <p className="text-lg font-Poppins font-bold text-white">Company</p>
+          <p className="text-lg font-Poppins font-bold text-white cursor-pointer">
+            Company
+          </p>
           <div className="space-y-3 mt-3">
-            <p className="text-md text-white font-Poppins">Lorem, ipsum.</p>
-            <p className="text-md text-white font-Poppins">Lorem, ipsum.</p>
-            <p className="text-md text-white font-Poppins">Lorem, ipsum.</p>
-            <p className="text-md text-white font-Poppins">Lorem, ipsum.</p>
-            <p className="text-md text-white font-Poppins">Lorem, ipsum.</p>
+            <p className="text-md text-white font-Poppins cursor-pointer">
+              Lorem, ipsum.
+            </p>
+            <p className="text-md text-white font-Poppins cursor-pointer">
+              Lorem, ipsum.
+            </p>
+            <p className="text-md text-white font-Poppins cursor-pointer">
+              Lorem, ipsum.
+            </p>
+            <p className="text-md text-white font-Poppins cursor-pointer">
+              Lorem, ipsum.
+            </p>
+            <p className="text-md text-white font-Poppins cursor-pointer">
+              Lorem, ipsum.
+            </p>
           </div>
         </div>
       </section>

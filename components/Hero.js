@@ -11,6 +11,7 @@ import nft5 from "../img/nft5.jpg";
 import nft6 from "../img/nft6.jpg";
 import nft7 from "../img/nft7.jpg";
 import Footer from "./Footer";
+import Posts from "./Posts";
 
 function Body() {
   return (
@@ -78,9 +79,7 @@ function Body() {
           <p className="text-3xl font-Nunito text-gray-700">Collections</p>
         </div>
         <div className="flex col-2 mt-[30px] space-x-8 mx-10">
-          <Post name="" img={nft5} />
-          <Post img={nft6} />
-          <Post img={nft7} />
+          <Posts />
         </div>
       </div>
 
