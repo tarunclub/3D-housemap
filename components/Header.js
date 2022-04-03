@@ -14,7 +14,7 @@ function Header() {
         {/* Logo */}
 
         {/* Title */}
-        <p className="font-Dosis text-3xl cursor-pointer text-blue-800">
+        <p className="font-Dosis text-4xl cursor-pointer text-blue-800">
           <Link href="/">
             <a>Ghar Naksha</a>
           </Link>
@@ -39,9 +39,12 @@ function Header() {
           <div className="cursor-pointer hover:bg-blue-500 px-2 py-1 rounded-lg hover:text-white hover:shadow-md hover:shadow-gray-700 transform transition duration-200">
             Explore
           </div>
-          <div className="cursor-pointer hover:bg-blue-500 px-2 py-1 rounded-lg hover:text-white hover:shadow-md hover:shadow-gray-700 transform transition duration-200">
-            Resources
+          <div>
+            <button className="cursor-pointer hover:bg-blue-500 px-2 py-1 rounded-lg hover:text-white hover:shadow-md hover:shadow-gray-700 transform transition font-bold duration-200">
+              Resources
+            </button>
           </div>
+
           <div className="cursor-pointer hover:bg-blue-500 px-2 py-1 rounded-lg hover:text-white hover:shadow-md hover:shadow-gray-900 transform transition duration-200">
             <Link href="/create">
               <a>Create</a>

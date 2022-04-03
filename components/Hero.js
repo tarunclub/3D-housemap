@@ -12,6 +12,7 @@ import nft6 from "../img/nft6.jpg";
 import nft7 from "../img/nft7.jpg";
 import Footer from "./Footer";
 import Posts from "./Posts";
+import Link from "next/link";
 
 function Body() {
   return (
@@ -33,7 +34,9 @@ function Body() {
               Explore
             </button>
             <button className="border-[1px] border-gray-400 text-blue-600 px-8 py-2 text-md rounded-lg font-Poppins font-semibold hover:bg-blue-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
-              Create
+              <Link href="/create">
+                <a>Create</a>
+              </Link>
             </button>
           </div>
 
