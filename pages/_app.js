@@ -1,6 +1,8 @@
 import "../styles/globals.css";
 import { SessionProvider } from "next-auth/react";
 import { RecoilRoot } from "recoil";
+import { Provider } from "react-redux";
+import { store } from "../app/store";
 
 export default function App({
   Component,
@@ -8,9 +10,11 @@ export default function App({
 }) {
   return (
     <SessionProvider session={session}>
-      <RecoilRoot>
-        <Component {...pageProps} />
-      </RecoilRoot>
+      <Provider store={store}>
+        <RecoilRoot>
+          <Component {...pageProps} />
+        </RecoilRoot>
+      </Provider>
     </SessionProvider>
   );
 }
