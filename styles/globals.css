@@ -5,10 +5,14 @@
 
 @layer components {
   .button {
-    @apply hover:bg-white hover:text-black px-3 py-1 rounded-full font-Poppins text-sm hover:transform transition duration-300 ease-out;
+    @apply hover:bg-blue-600 hover:text-white text-yellow-400 border-2 px-4 py-2 w-[120px] rounded-full font-Poppins text-sm hover:transform transition duration-300 ease-out;
   }
 
   .btn {
     @apply p-2 text-xs text-black md:text-sm bg-gradient-to-b from-yellow-200 to-yellow-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 active:from-yellow-500;
+  }
+
+  .input {
+    @apply px-4 py-2 text-gray-300 bg-transparent focus:outline-none border-2 border-gray-300 rounded-full;
   }
 }

@@ -2,20 +2,19 @@ import Image from "next/image";
 import instagram from "../icons/instagram.png";
 import twitter from "../icons/twitter.png";
 import linkedin from "../icons/linkedin.png";
+import Youtube from "../icons/youtube.png";
 
 function Footer() {
   return (
-    <div className=" mt-[80px] pb-[20px] bg-blue-500">
+    <div className=" mt-[80px] pb-[20px] bg-blue-600 rounded-md">
       {/* Connect Section */}
       <section className="flex flex-row mx-10 py-8">
         <div>
-          <p className="font-Poppins font-bold text-white text-2xl">
-            Stay in the loop
-          </p>
-          <div className="text-white font-Poppins mt-5 text-lg">
+          <p className="font-Poppins text-white text-2xl">Stay in the loop</p>
+          <div className="text-white text-sm font-Poppins mt-5 ">
             Join our mailing list to stay in the loop with our newest feature
             <br />
-            releases and tips and tricks for navigating Ghar Naksha.
+            releases and tips and tricks for navigating 3Dhousemap.
           </div>
           <div className="flex mt-6">
             <div className="bg-gray-800 w-fit px-4 py-2 rounded-lg">
@@ -35,14 +34,12 @@ function Footer() {
 
         {/* Social Section */}
         <div className="flex flex-col mx-auto">
-          <p className="font-Poppins font-bold text-white text-2xl">
-            Join the community
-          </p>
+          <p className="font-Poppins text-white text-2xl">Join the community</p>
 
           {/* Icons */}
           <div className="flex space-x-5 mt-4">
-            <div className="">
-              <button className=" text-blue-600 px-2 py-1 rounded-lg hover:bg-blue-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
+            <div>
+              <button className=" text-blue-600 px-2 py-1 rounded-lg hover:bg-[#fb3958] hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
                 <Image src={instagram} height={25} width={25} />
               </button>
             </div>
@@ -52,7 +49,17 @@ function Footer() {
               </button>
             </div>
             <div className="">
-              <button className=" text-blue-600 px-2 py-1 rounded-lg hover:bg-blue-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
+              <button className=" text-blue-600 px-2 py-1 rounded-lg hover:bg-[#FF0000] hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
+                <Image
+                  src={Youtube}
+                  height={25}
+                  width={25}
+                  className="text-white"
+                />
+              </button>
+            </div>
+            <div className="">
+              <button className=" text-blue-600 px-2 py-1 rounded-lg hover:bg-[#0072b1] hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
                 <Image src={linkedin} height={25} width={25} />
               </button>
             </div>
