@@ -27,7 +27,7 @@ function Product({ id, title, price, category, image }) {
     dispatch(addToBasket(product));
   };
   return (
-    <div className="relative flex flex-col cursor-pointer bg-white z-30 m-5 p-10 font-Poppins shadow-lg shadow-gray-600 rounded-lg">
+    <div className="relative flex flex-col cursor-pointer bg-white z-30 m-5 p-10 font-Poppins shadow-lg shadow-gray-400 rounded-lg">
       <p className="absolute top-2 right-2 text-xs text-gray-400">{category}</p>
 
       <Image src={image} height={200} width={200} objectFit="contain" />

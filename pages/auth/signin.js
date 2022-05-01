@@ -5,9 +5,9 @@ import google from "../../icons/google.png";
 
 export default function SignIn({ providers }) {
   return (
-    <>
+    <div className="bg-[#000] h-screen overflow-scroll scrollbar-hide text-white">
       <Header />
-      <div className="flex flex-col items-center justify-center mt-20">
+      <div className="flex flex-col items-center justify-center mt-20 ">
         <p className="font-Dosis text-6xl cursor-pointer text-blue-800">
           <button>Ghar Naksha</button>
         </p>
@@ -40,7 +40,7 @@ export default function SignIn({ providers }) {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

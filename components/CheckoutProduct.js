@@ -32,8 +32,9 @@ function CheckoutProduct({
   const removeItemFromBasket = () => {
     dispatch(removeFromBasket({ id }));
   };
+
   return (
-    <div className="grid grid-cols-5 flex-col cursor-pointer bg-white z-30 m-5 p-10 font-Poppins shadow-md shadow-white rounded-lg text-black">
+    <div className="grid grid-cols-5 flex-col cursor-pointer bg-white z-30 m-5 p-10 font-Poppins shadow-lg shadow-gray-300 rounded-lg text-black hover:scale-105 transform transition duration-500 ease-out">
       <Image src={image} height={200} width={200} objectFit="contain" />
 
       {/* Middle */}
@@ -53,7 +54,7 @@ function CheckoutProduct({
       </div>
 
       {/* Right */}
-      <div className="flex flex-col space-y-2 my-auto justify-self-end">
+      <div className="flex flex-col space-y-8 my-auto justify-self-end">
         <button className="btn mt-auto" onClick={addItemToBasket}>
           Add to Basket
         </button>

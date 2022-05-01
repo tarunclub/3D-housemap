@@ -1,3 +1,5 @@
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useSelector } from "react-redux";
@@ -5,14 +7,32 @@ import CheckoutProduct from "../components/CheckoutProduct";
 import Header from "../components/Header";
 import { selectItems, selectTotal } from "../slices/basketSlice";
 
+const stripePromise = loadStripe(process.env.stripe_public_key);
+
 function Checkout() {
   const items = useSelector(selectItems);
   const total = useSelector(selectTotal);
   const session = useSession();
+
+  const createCheckoutSession = async () => {
+    const stripe = await stripePromise;
+
+    const checkoutSession = await axios.post("/api/create-checkout-session", {
+      items: items,
+      email: session.user?.email,
+    });
+
+    const result = await stripe.redirectToCheckout({
+      sessionId: checkoutSession.id,
+    });
+
+    if (result.error) alert(result.error.message);
+  };
+
   return (
-    <div className="h-screen overflow-scroll scrollbar-hide">
+    <div className="h-screen overflow-scroll scrollbar-hide bg-[#000] text-white">
       <Header />
-      <main className="max-w-6xl lg:flex mx-auto font-Poppins">
+      <main className="max-w-6xl lg:flex mx-auto font-Poppins ">
         {/* Left */}
         <div className="flex-grow m-5 rounded-lg">
           <Image
@@ -53,13 +73,16 @@ function Checkout() {
                   </div>
                 </span>
               </h2>
-
-              <button
-                className="btn mt-2 whitespace-nowrap"
-                disabled={!session}
-              >
-                {!session ? "Sign in to Checkout" : "Proceed to Checkout"}
-              </button>
+              <form action="/api/auth/create-checkout-session" method="POST">
+                <button
+                  onClick={createCheckoutSession}
+                  type="submit"
+                  className="btn mt-2 whitespace-nowrap"
+                  disabled={!session}
+                >
+                  {!session ? "Sign in to Checkout" : "Proceed to Checkout"}
+                </button>
+              </form>
             </>
           )}
         </div>

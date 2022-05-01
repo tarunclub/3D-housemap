@@ -8,6 +8,7 @@ import {
 } from "@heroicons/react/solid";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
+import Image from "next/image";
 import { useState, useRef } from "react";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
@@ -31,19 +32,19 @@ function User() {
   };
 
   return (
-    <div className="">
+    <div className="bg-[#000] text-gray-400 h-screen overflow-scroll scrollbar-hide">
       <Head>
-        <title>{session.user.name}</title>
+        <title>{session?.user.name}</title>
       </Head>
       <Header />
 
       {/* Top Section */}
       <section className="flex flex-col items-center mt-0">
         {/* Input */}
-        <div className="h-[200px] w-full bg-gray-300 cursor-pointer">
+        <div className="h-[200px] w-full bg-[#1E1E1E] cursor-pointer">
           <div>
             {selectedFile ? (
-              <img src={selectedFile} onClick={() => setSelectedFile(null)} />
+              <Image src={selectedFile} onClick={() => setSelectedFile(null)} />
             ) : (
               <div
                 onClick={() => filePickerRef.current.click()}
@@ -71,18 +72,21 @@ function User() {
           {/* Profile Pic */}
           <div className="ml-[550px] mt-[10px] w-fit rounded-full border-8 border-white">
             <img
-              src={session.user.image}
+              src={session?.user.image}
               className="rounded-full object-fit h-40 w-40"
+              objectFit="contain"
             />
           </div>
         </div>
 
         {/* User Info */}
         <div className="flex flex-col items-center mx-auto mt-28">
-          <p className="font-Poppins font-bold text-3xl">{session.user.name}</p>
+          <p className="font-Poppins font-bold text-3xl">
+            {session?.user.name}
+          </p>
 
           <p className="font-Poppins font-bold text-sm text-gray-600">
-            {session.user.email}
+            {session?.user.email}
           </p>
         </div>
 
