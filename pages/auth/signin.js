@@ -6,7 +6,7 @@ import { PlayIcon } from "@heroicons/react/outline";
 
 export default function SignIn({ providers }) {
   return (
-    <div className="grid grid-cols-2">
+    <div className="grid grid-cols-2 bg-[#1E1E1E] ">
       <section className="flex flex-row bg-[url('../img/background.png')] bg-no-repeat bg-cover py-8 h-screen">
         <div className="mx-10">
           {/* Tag Line */}
@@ -14,7 +14,7 @@ export default function SignIn({ providers }) {
             Discover, buy and sell extraordinary ground plans
           </p>
           {/* Desc */}
-          <p className="font-Poppins text-white font-semibold mt-10">
+          <p className="font-Poppins font-semibold mt-10 text-black">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora,
             ex.
           </p>
@@ -24,7 +24,7 @@ export default function SignIn({ providers }) {
             </button>
             <button className="border-[1px] border-gray-400 text-blue-600 px-8 py-2 text-md rounded-lg font-Poppins font-semibold hover:bg-blue-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
               <Link href="/create">
-                <a>Create</a>
+                <a>Join us</a>
               </Link>
             </button>
           </div>
@@ -42,7 +42,7 @@ export default function SignIn({ providers }) {
         <p className="font-Dosis text-6xl cursor-pointer text-blue-800">
           <button>3Dhousemap</button>
         </p>
-        <p className="font-Ubuntu text-[20px] font-semibold mt-4 mb-8">
+        <p className="font-Ubuntu text-[20px] font-semibold mt-4 mb-8 text-white">
           Discover, buy and sell extraordinary ground plans
         </p>
         <div className="mt-10 flex flex-col items-center border-[1px] border-gray-600 px-4 py-6 rounded-lg">
