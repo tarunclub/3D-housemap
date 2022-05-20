@@ -17,6 +17,7 @@ import instagram from "../icons/instagram.png";
 import twitter from "../icons/twitter.png";
 import linkedin from "../icons/linkedin.png";
 import Youtube from "../icons/youtube.png";
+// import logo from "../icons/logo.png";
 
 function Header() {
   const { data: session } = useSession();
@@ -26,17 +27,15 @@ function Header() {
 
   const [searchInput, setSearchInput] = useState("");
   return (
-    <header className="sticky top-0 z-50 px-4 py-2 shadow-lg  shadow-gray-600 text-white bg-[#1E1E1E]">
+    <header className="sticky top-0 z-50 px-4 shadow-lg  shadow-gray-700 text-black bg-white text-sm">
       <div className="flex items-center justify-between my-auto py-3">
         {/* Header Left */}
         <div className="">
           {/* Logo */}
 
           {/* Title */}
-          <p className="font-Dosis font-bold text-2xl cursor-pointer text-blue-800">
-            <Link href="/">
-              <a>3D House Map</a>
-            </Link>
+          <p className="font-Ubuntu font-bold text-blue-700 text-xl cursor-pointer">
+            3Dhousemap.com
           </p>
         </div>
 
@@ -49,19 +48,19 @@ function Header() {
               onChange={(e) => setSearchInput(e.target.value)}
               type="text"
               placeholder="Search maps, collections and ideas"
-              className="outline-none bg-transparent text-gray-300 font-Poppins  placeholder:text-md ml-2 w-[400px]"
+              className="outline-none bg-transparent text-gray-500 font-Poppins  placeholder:text-md ml-2 w-[400px]"
             />
           </div>
         </div>
 
         {/* Header Right */}
         <div>
-          <div className="flex items-center space-x-6 font-Poppins text-gray-300">
-            <div className="cursor-pointer hover:bg-blue-700 px-2 py-1 rounded-lg hover:text-white hover:shadow-md hover:shadow-gray-600 transform transition duration-200">
+          <div className="flex items-center space-x-6 font-Poppins text-gray-700">
+            <div className="cursor-pointer hover:bg-blue-600 p-2 rounded-lg hover:text-white hover:shadow-md hover:shadow-gray-600 transform transition duration-200">
               <Link href="/">
                 <a className="flex">
                   <p>Join us</p>
-                  <GlobeAltIcon className="h-6 ml-2" />
+                  <GlobeAltIcon className="h-5 ml-2" />
                 </a>
               </Link>
             </div>
@@ -84,7 +83,7 @@ function Header() {
 
                 <div className="ml-4">
                   <button
-                    className=" text-blue-700 font-Poppins hover:shadow-md hover:shadow-gray-700 px-3 py-1 rounded-lg hover:text-white hover:bg-blue-600 border-gray-700"
+                    className=" text-blue-700 font-Poppins hover:shadow-md hover:shadow-gray-700 p-2 rounded-lg hover:text-white hover:bg-blue-600 border-gray-700"
                     onClick={signOut}
                   >
                     Sign out
@@ -106,8 +105,8 @@ function Header() {
                   <span className="absolute -top-2 md:right-12 h-4 w-4 bg-yellow-400 text-center rounded-full text-black font-semibold text-sm">
                     {items.length}
                   </span>
-                  <ShoppingCartIcon className="h-7 text-white" />
-                  <p className="text-sm ml-1 text-white">Basket</p>
+                  <ShoppingCartIcon className="h-7" />
+                  <p className="text-sm ml-1 ">Basket</p>
                 </a>
               </Link>
             </div>
@@ -116,7 +115,7 @@ function Header() {
       </div>
       {searchInput && (
         <div className="grid grid-cols-2 font-Poppins text-xs py-4 max-w-4xl mx-auto">
-          <section className="flex flex-col items-center space-y-3 py-3 shadow-md shadow-gray-400 rounded-xl mx-3">
+          <section className="flex flex-col items-center space-y-3 py-3 shadow-md shadow-gray-500 rounded-xl mx-3">
             <h3 className="text-2xl">Quick Search</h3>
             <div className="flex flex-col items-center space-y-1">
               <div className="flex space-x-4 items-center">
@@ -158,11 +157,7 @@ function Header() {
               </div>
               <h3>Directions</h3>
               <div className="text-black">
-                <select
-                  name="directions"
-                  id=""
-                  className="w-[300px] input text-gray-300 bg-[#1E1E1E]"
-                >
+                <select name="directions" id="" className="w-[300px] input">
                   <option value="">North</option>
                   <option value="">South</option>
                   <option value="">East</option>

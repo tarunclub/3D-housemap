@@ -1,4 +1,4 @@
-import { loadStripe } from "@stripe/stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
@@ -6,8 +6,6 @@ import { useSelector } from "react-redux";
 import CheckoutProduct from "../components/CheckoutProduct";
 import Header from "../components/Header";
 import { selectItems, selectTotal } from "../slices/basketSlice";
-
-const stripePromise = loadStripe(process.env.stripe_public_key);
 
 function Checkout() {
   const items = useSelector(selectItems);
@@ -30,7 +28,7 @@ function Checkout() {
   };
 
   return (
-    <div className="h-screen overflow-scroll scrollbar-hide bg-[#000] text-white">
+    <div className="h-screen overflow-scroll scrollbar-hide">
       <Header />
       <main className="max-w-6xl lg:flex mx-auto font-Poppins ">
         {/* Left */}

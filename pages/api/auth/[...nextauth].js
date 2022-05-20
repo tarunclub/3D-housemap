@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import FacebookProvider from "next-auth/providers/facebook";
 
 const GOOGLE_AUTHORIZATION_URL =
   "https://accounts.google.com/o/oauth2/v2/auth?" +
@@ -59,7 +60,10 @@ export default NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       authorization: GOOGLE_AUTHORIZATION_URL,
     }),
-    // ...add more providers here
+    FacebookProvider({
+      clientId: process.env.FACEBOOK_CLIENT_ID,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    }),
   ],
   pages: {
     signIn: "/auth/signin",

@@ -5,7 +5,7 @@
 
 @layer components {
   .button {
-    @apply hover:bg-blue-600 hover:text-white text-yellow-400 border-2 px-4 py-2 w-[120px] rounded-full font-Poppins text-sm hover:transform transition duration-300 ease-out;
+    @apply hover:bg-blue-600 hover:text-white border-2 px-4 py-2 w-[120px] rounded-full font-Poppins text-sm hover:transform transition duration-300 ease-out;
   }
 
   .btn {
@@ -13,6 +13,6 @@
   }
 
   .input {
-    @apply px-4 py-2 text-gray-300 bg-transparent focus:outline-none border-2 border-gray-300 rounded-full;
+    @apply px-4 py-1 text-sm text-gray-600 bg-transparent focus:outline-none border-2 border-gray-600 rounded-full;
   }
 }

@@ -6,7 +6,7 @@ import { PlayIcon } from "@heroicons/react/outline";
 
 export default function SignIn({ providers }) {
   return (
-    <div className="grid grid-cols-2 bg-[#1E1E1E] ">
+    <div className="grid grid-cols-2">
       <section className="flex flex-row bg-[url('../img/background.png')] bg-no-repeat bg-cover py-8 h-screen">
         <div className="mx-10">
           {/* Tag Line */}
@@ -19,12 +19,12 @@ export default function SignIn({ providers }) {
             ex.
           </p>
           <div className="flex space-x-9 mt-[50px]">
-            <button className="bg-blue-600 px-8 py-2 mr-4 text-md rounded-lg text-white font-Poppins font-semibold border-gray-400 hover:bg-white hover:shadow-md hover:shadow-gray-700 hover:text-blue-600 transform transition duration-200">
+            {/* <button className="bg-blue-600 px-8 py-2 mr-4 text-md rounded-lg text-white font-Poppins font-semibold border-gray-600 hover:bg-white hover:shadow-md hover:shadow-gray-700 hover:text-blue-600 transform transition duration-200">
               Explore
-            </button>
+            </button> */}
             <button className="border-[1px] border-gray-400 text-blue-600 px-8 py-2 text-md rounded-lg font-Poppins font-semibold hover:bg-blue-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
-              <Link href="/create">
-                <a>Join us</a>
+              <Link href="/">
+                <a>Explore</a>
               </Link>
             </button>
           </div>
@@ -42,7 +42,7 @@ export default function SignIn({ providers }) {
         <p className="font-Dosis text-6xl cursor-pointer text-blue-800">
           <button>3Dhousemap</button>
         </p>
-        <p className="font-Ubuntu text-[20px] font-semibold mt-4 mb-8 text-white">
+        <p className="font-Ubuntu text-[20px] font-semibold mt-4 mb-8 text-blue-700">
           Discover, buy and sell extraordinary ground plans
         </p>
         <div className="mt-10 flex flex-col items-center border-[1px] border-gray-600 px-4 py-6 rounded-lg">

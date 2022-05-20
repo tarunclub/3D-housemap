@@ -9,12 +9,14 @@ import {
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useRef } from "react";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
 import Header from "../components/Header";
+import ProductFeed from "../components/ProductFeed";
 
-function User() {
+function User({ products }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const filePickerRef = useRef(null);
   const [open, setOpen] = useRecoilState(modalState);
@@ -32,7 +34,7 @@ function User() {
   };
 
   return (
-    <div className="bg-[#000] text-gray-400 h-screen overflow-scroll scrollbar-hide">
+    <div className="h-screen overflow-scroll scrollbar-hide">
       <Head>
         <title>{session?.user.name}</title>
       </Head>
@@ -41,7 +43,7 @@ function User() {
       {/* Top Section */}
       <section className="flex flex-col items-center mt-0">
         {/* Input */}
-        <div className="h-[200px] w-full bg-[#1E1E1E] cursor-pointer">
+        <div className="h-[200px] w-full bg-gray-300 cursor-pointer">
           <div>
             {selectedFile ? (
               <Image src={selectedFile} onClick={() => setSelectedFile(null)} />
@@ -91,15 +93,19 @@ function User() {
         </div>
 
         {/* Options */}
-        <div className="flex items-center justify-between px-4 py-2 mt-28 mx-auto w-full">
-          <div className="flex items-center cursor-pointer">
-            <CollectionIcon className="h-6 text-gray-500" />
-            <p className="font-Ubuntu ml-2 text-lg text-gray-500">Collected</p>
+        <div className="flex items-center justify-between px-4 py-2 mt-28 mx-auto w-full font-semibold">
+          <div className="flex items-center cursor-pointer text-blue-600">
+            <CollectionIcon className="h-6 " />
+            <p className="font-Ubuntu ml-2 text-lg">Collection</p>
           </div>
 
-          <div className="flex items-center cursor-pointer">
-            <PencilAltIcon className="h-6 text-gray-500" />
-            <p className="font-Ubuntu ml-2 text-lg text-gray-500">Created</p>
+          <div>
+            <Link href="/create">
+              <a className="flex items-center cursor-pointer">
+                <PencilAltIcon className="h-6 text-gray-500" />
+                <p className="font-Ubuntu ml-2 text-lg text-gray-500">Create</p>
+              </a>
+            </Link>
           </div>
 
           <div className="flex items-center cursor-pointer">
@@ -113,8 +119,24 @@ function User() {
           </div>
         </div>
       </section>
+      {/* Middle section */}
+      <section className="mt-32">
+        <ProductFeed products={products} />
+      </section>
     </div>
   );
 }
 
 export default User;
+
+export async function getServerSideProps(context) {
+  const products = await fetch("https://fakestoreapi.com/products").then(
+    (res) => res.json()
+  );
+
+  return {
+    props: {
+      products,
+    },
+  };
+}
