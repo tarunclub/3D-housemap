@@ -2,68 +2,119 @@ import Image from "next/image";
 import Header from "../components/Header";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../slices/basketSlice";
 import plan1 from "../img/plan1.jpg";
 import plan2 from "../img/plan2.jpg";
 import plan3 from "../img/plan3.jpg";
 
 function product() {
+  const makePayment = async () => {
+    console.log("here...");
+    const res = await initializeRazorpay();
+
+    if (!res) {
+      alert("Razorpay SDK Failed to load");
+      return;
+    }
+
+    // Make API call to the serverless API
+    const data = await fetch("/api/razorpay", { method: "POST" }).then((t) =>
+      t.json()
+    );
+    console.log(data);
+    var options = {
+      key: process.env.RAZORPAY_API_KEY, // Enter the Key ID generated from the Dashboard
+      name: "3D HouseMap Pvt Ltd",
+      currency: data.currency,
+      amount: data.amount,
+      order_id: data.id,
+      description: "Thankyou for your order",
+      image: "",
+      handler: function (response) {
+        // Validate payment at server - using webhooks is a better idea.
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature);
+      },
+      prefill: {
+        name: "Tarun",
+        email: "tarunk1004@gmail.com",
+        contact: "9871726301",
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  };
+  const initializeRazorpay = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      // document.body.appendChild(script);
+
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+
+      document.body.appendChild(script);
+    });
+  };
   return (
     <div className="top-0 overflow-y-scroll h-screen scrollbar-hide">
       <Header />
-      <main className="grid grid-cols-2 p-2">
+      <main className="flex flex-row p-4">
         {/* Left Section */}
-        <section className="grid-cols-1 mt-6 ml-4">
-          <div className="h-[300px] w-[400px]">
-            <Carousel
-              autoPlay
-              infiniteLoop
-              showStatus={false}
-              showIndicators={true}
-              showThumbs={true}
-              interval={3000}
-            >
-              <div>
-                <Image loading="lazy" src={plan1} objectFit="contain" />
-              </div>
-              <div>
-                <Image loading="lazy" src={plan2} objectFit="contain" />
-              </div>
-              <div>
-                <Image loading="lazy" src={plan3} objectFit="contain" />
-              </div>
-            </Carousel>
-          </div>
+        <section className="w-[550px] shadow-md shadow-gray-500 rounded-lg mr-">
+          <Carousel interval={3000}>
+            <div className="">
+              <img
+                src="https://i.pinimg.com/474x/6a/f8/8b/6af88bc45482179262233f8acbdca52c.jpg"
+                className="object-contain rounded-lg"
+              />
+            </div>
+            <div>
+              <img
+                src="https://i.pinimg.com/474x/1a/8c/84/1a8c84b45d87bb1b8668ff4a241a15e8.jpg"
+                className=" object-contain rounded-lg"
+              />
+            </div>
+            <div>
+              <img
+                src="https://i.pinimg.com/474x/0a/73/be/0a73bed166891727fd3e99586d4b51a8.jpg"
+                className="object-contain rounded-lg"
+              />
+            </div>
+          </Carousel>
         </section>
 
         {/* Right Section */}
-        <section className="flex flex-col mt-6 items-center relative font-Poppins p-8 rounded-lg shadow-gray-500 shadow-md">
-          <p className="text-lg font-bold mt-4 text-green-600">
-            17x29 Home plan-493 sqft house Exterior Design at New Delhi
+        <section className="relative flex flex-col w-[700px] font-Poppins shadow-md shadow-gray-500 p-5 rounded-lg mx-auto space-y-8">
+          <p className="font-Poppins font-bold text-lg">
+            27x24 Home Plan-493 sqft house Exterior Design at New Delhi
           </p>
-          <div className="flex space-x-20 mt-7">
-            <button className="btn px-6">Modify Plan</button>
-            <button className="btn px-6">Get Working Drawings</button>
+          <div className="flex items-center space-x-4">
+            <button className="btn px-3">Modify Plan</button>
+
+            <button className="btn px-3" onClick={makePayment}>
+              Buy Now
+            </button>
           </div>
-          <div className="mt-6">
-            <p className="font-semibold text-green-600">Project Description</p>
-            <p className="text-sm text-gray-500">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Exercitationem ipsa non magni optio. Iusto illo, tempore
-              distinctio autem accusantium facilis obcaecati dolorum omnis ipsa!
-              Voluptatum iusto magnam accusamus esse natus!
+          <div>
+            <p className="font-semibold">Project Description</p>
+            <p className="text-gray-600 text-sm">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum
+              architecto alias earum, consectetur ad praesentium quas cum quod
+              rerum hic voluptatum! Consequatur fugiat facilis ullam maxime
+              repellat, similique fugit dignissimos.
             </p>
           </div>
-          <div className="grid grid-cols-2 space-x-20 mt-8">
-            <div className="grid-cols-1">
-              <p className="font-semibold text-green-600">Plan Description</p>
-            </div>
-            <div className="grid-cols-1">
-              <p className="font-semibold text-green-600">Floor Description</p>
-            </div>
-          </div>
-          <div className="flex mt-24 space-x-20 justify-around">
-            <button className="btn px-10">Buy Now</button>
-            <button className="btn px-10">Add to Cart</button>
+          <div className="flex flex-row justify-around items-center">
+            <p>Plan Description</p>
+            <p>Floor Description</p>
           </div>
         </section>
       </main>

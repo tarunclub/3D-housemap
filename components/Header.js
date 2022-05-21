@@ -17,7 +17,7 @@ import instagram from "../icons/instagram.png";
 import twitter from "../icons/twitter.png";
 import linkedin from "../icons/linkedin.png";
 import Youtube from "../icons/youtube.png";
-// import logo from "../icons/logo.png";
+import logo from "../icons/logo.png";
 
 function Header() {
   const { data: session } = useSession();
@@ -28,15 +28,19 @@ function Header() {
   const [searchInput, setSearchInput] = useState("");
   return (
     <header className="sticky top-0 z-50 px-4 shadow-lg  shadow-gray-700 text-black bg-white text-sm">
-      <div className="flex items-center justify-between my-auto py-3">
+      <div className="flex items-center justify-between my-auto py-1">
         {/* Header Left */}
         <div className="">
-          {/* Logo */}
-
-          {/* Title */}
-          <p className="font-Ubuntu font-bold text-blue-700 text-xl cursor-pointer">
-            3Dhousemap.com
-          </p>
+          <Link href="/">
+            <a className="flex items-center">
+              {/* Logo */}
+              <Image src={logo} objectFit="contain" height={54} width={54} />
+              {/* Title */}
+              <p className="font-Poppins font-bold text-purple-500 text-lg cursor-pointer">
+                3Dhousemap
+              </p>
+            </a>
+          </Link>
         </div>
 
         {/* Header Center */}
@@ -127,7 +131,7 @@ function Header() {
                   <input
                     type="Number"
                     placeholder="Min plot area(sqft)"
-                    className="input"
+                    className="input w-[190px]"
                   />
                   <input
                     type="Number"
@@ -146,7 +150,7 @@ function Header() {
                   <input
                     type="Number"
                     placeholder="Width(ft)"
-                    className="input"
+                    className="input w-[190px]"
                   />
                   <input
                     type="Number"

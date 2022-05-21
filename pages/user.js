@@ -93,7 +93,7 @@ function User({ products }) {
         </div>
 
         {/* Options */}
-        <div className="flex items-center justify-between px-4 py-2 mt-28 mx-auto w-full font-semibold">
+        <div className="flex items-center justify-between px-4 py-2 mt-28 mx-auto w-full font-semibold max-w-6xl">
           <div className="flex items-center cursor-pointer text-blue-600">
             <CollectionIcon className="h-6 " />
             <p className="font-Ubuntu ml-2 text-lg">Collection</p>
@@ -120,7 +120,7 @@ function User({ products }) {
         </div>
       </section>
       {/* Middle section */}
-      <section className="mt-32">
+      <section className="mt-32 max-w-6xl mx-auto">
         <ProductFeed products={products} />
       </section>
     </div>

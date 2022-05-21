@@ -1,5 +1,5 @@
 // import { loadStripe } from "@stripe/stripe-js";
-import axios from "axios";
+// import axios from "axios";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useSelector } from "react-redux";
@@ -7,24 +7,64 @@ import CheckoutProduct from "../components/CheckoutProduct";
 import Header from "../components/Header";
 import { selectItems, selectTotal } from "../slices/basketSlice";
 
-function Checkout() {
+function Checkout({ onClick }) {
   const items = useSelector(selectItems);
   const total = useSelector(selectTotal);
   const session = useSession();
 
-  const createCheckoutSession = async () => {
-    const stripe = await stripePromise;
+  const makePayment = async () => {
+    console.log("here...");
+    const res = await initializeRazorpay();
 
-    const checkoutSession = await axios.post("/api/create-checkout-session", {
-      items: items,
-      email: session.user?.email,
+    if (!res) {
+      alert("Razorpay SDK Failed to load");
+      return;
+    }
+
+    // Make API call to the serverless API
+    const data = await fetch("/api/razorpay", { method: "POST" }).then((t) =>
+      t.json()
+    );
+    console.log(data);
+    var options = {
+      key: process.env.RAZORPAY_API_KEY, // Enter the Key ID generated from the Dashboard
+      name: "3D HouseMap Pvt Ltd",
+      currency: data.currency,
+      amount: data.amount,
+      order_id: data.id,
+      description: "Thankyou for your order",
+      image: "",
+      handler: function (response) {
+        // Validate payment at server - using webhooks is a better idea.
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature);
+      },
+      prefill: {
+        name: "Tarun",
+        email: "tarunk1004@gmail.com",
+        contact: "9871726301",
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  };
+  const initializeRazorpay = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      // document.body.appendChild(script);
+
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+
+      document.body.appendChild(script);
     });
-
-    const result = await stripe.redirectToCheckout({
-      sessionId: checkoutSession.id,
-    });
-
-    if (result.error) alert(result.error.message);
   };
 
   return (
@@ -71,16 +111,15 @@ function Checkout() {
                   </div>
                 </span>
               </h2>
-              <form action="/api/auth/create-checkout-session" method="POST">
-                <button
-                  onClick={createCheckoutSession}
-                  type="submit"
-                  className="btn mt-2 whitespace-nowrap"
-                  disabled={!session}
-                >
-                  {!session ? "Sign in to Checkout" : "Proceed to Checkout"}
-                </button>
-              </form>
+
+              <button
+                onClick={makePayment}
+                type="submit"
+                className="btn mt-2 whitespace-nowrap"
+                disabled={!session}
+              >
+                {!session ? "Sign in to Checkout" : "Proceed to Checkout"}
+              </button>
             </>
           )}
         </div>

@@ -3,6 +3,7 @@ import instagram from "../icons/instagram.png";
 import twitter from "../icons/twitter.png";
 import linkedin from "../icons/linkedin.png";
 import Youtube from "../icons/youtube.png";
+import logo from "../icons/logo.png";
 
 function Footer() {
   return (
@@ -71,8 +72,9 @@ function Footer() {
       {/* Bottom Section */}
       <section className="flex flex-row justify-between mx-10 mt-5">
         <div>
-          <p className="font-Dosis text-3xl cursor-pointer text-white">
-            Ghar Naksha
+          <p className="flex items-center font-Poppins text-3xl cursor-pointer text-white">
+            <Image src={logo} objectFit="contain" height={54} width={54} />
+            3Dhousemap
           </p>
           <p className="text-white mt-5 text-lg font-Poppins">
             Buy, sell, and discover exclusive digital ground maps.
