@@ -92,7 +92,7 @@ function product() {
         </section>
 
         {/* Right Section */}
-        <section className="relative flex flex-col w-[700px] font-Poppins shadow-md shadow-gray-500 p-5 rounded-lg mx-auto space-y-8">
+        <section className="relative flex flex-col w-[670px] font-Poppins shadow-md shadow-gray-500 p-4 rounded-lg mx-auto space-y-8">
           <p className="font-Poppins font-bold text-lg">
             27x24 Home Plan-493 sqft house Exterior Design at New Delhi
           </p>
