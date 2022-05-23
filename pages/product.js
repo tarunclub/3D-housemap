@@ -8,7 +8,7 @@ import plan1 from "../img/plan1.jpg";
 import plan2 from "../img/plan2.jpg";
 import plan3 from "../img/plan3.jpg";
 
-function product() {
+function Product() {
   const makePayment = async () => {
     console.log("here...");
     const res = await initializeRazorpay();
@@ -122,4 +122,4 @@ function product() {
   );
 }
 
-export default product;
+export default Product;

@@ -72,7 +72,7 @@ function User({ products }) {
           />
 
           {/* Profile Pic */}
-          <div className="ml-[550px] mt-[10px] w-fit rounded-full border-8 border-white">
+          <div className="mx-auto mt-[10px] w-fit rounded-full border-8 border-white">
             <img
               src={session?.user.image}
               className="rounded-full object-fit h-40 w-40"

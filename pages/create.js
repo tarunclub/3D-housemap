@@ -16,7 +16,7 @@ import { useSession } from "next-auth/react";
 import { ref, getDownloadURL, uploadString } from "firebase/storage";
 import Head from "next/head";
 
-function create() {
+function Create() {
   const { data: session } = useSession();
   const [open, setOpen] = useRecoilState(modalState);
   const filePickerRef = useRef(null);
@@ -193,4 +193,4 @@ function create() {
     </div>
   );
 }
-export default create;
+export default Create;

@@ -61,7 +61,7 @@ function Header() {
         <div>
           <div className="flex items-center space-x-6 font-Poppins text-gray-700">
             <div className="cursor-pointer hover:bg-blue-600 p-2 rounded-lg hover:text-white hover:shadow-md hover:shadow-gray-600 transform transition duration-200">
-              <Link href="/">
+              <Link href="/joinus">
                 <a className="flex">
                   <p>Join us</p>
                   <GlobeAltIcon className="h-5 ml-2" />

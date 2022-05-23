@@ -2,7 +2,9 @@ import Head from "next/head";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import ProductFeed from "../components/ProductFeed";
+import Clients from "../components/Clients";
 import SmallCard from "../components/SmallCard";
+import Ytcard from "../components/Ytcard";
 import twoDDesign from "../public/img/2DHouseMap.jpg";
 import threeDDesign from "../public/img/3Dhousemap.jpg";
 import floorplan from "../public/img/floorplan.jpg";
@@ -14,6 +16,13 @@ import Kolkata from "../public/img/Kolkata.jpg";
 import Bangalore from "../public/img/Bangalore.jpg";
 import MediumCard from "../components/MediumCard";
 import Footer from "../components/Footer";
+import img1 from "../img/img1.png";
+import img2 from "../img/img2.png";
+import img3 from "../img/img3.png";
+import img4 from "../img/img4.png";
+import img5 from "../img/img5.png";
+import img6 from "../img/img6.png";
+import img7 from "../img/img7.png";
 
 export default function Home({ products }) {
   return (
@@ -31,8 +40,10 @@ export default function Home({ products }) {
         <ProductFeed products={products} />
 
         {/* Services */}
-        <section className="pt-10 mt-5">
-          <h2 className="text-4xl font-semibold font-Ubuntu pb-5">Services</h2>
+        <section className="pt-10 mt-8">
+          <h2 className="text-3xl text-gray-600 font-semibold font-Ubuntu pb-5">
+            Services
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             <SmallCard img={twoDDesign} heading="2D House Design" desc="desc" />
             <SmallCard
@@ -52,11 +63,11 @@ export default function Home({ products }) {
 
         {/* Service location */}
         <section className="pt-10 mt-5">
-          <h2 className="text-3xl font-semibold font-Ubuntu pb-5">
+          <h2 className="text-3xl text-gray-600 font-semibold font-Ubuntu pb-5">
             We provide our construction services in
           </h2>
 
-          <div className="flex p-3 space-x-5 overflow-scroll scrollbar-hide">
+          <div className="flex py-8 px-4 space-x-5 overflow-scroll scrollbar-hide">
             <MediumCard img={Delhi} title="Delhi" />
             <MediumCard img={Mumbai} title="Mumbai" />
             <MediumCard img={Kolkata} title="Kolkata" />
@@ -64,6 +75,70 @@ export default function Home({ products }) {
             <MediumCard img={Bangalore} title="Bangalore" />
             <MediumCard img={Bangalore} title="Bangalore" />
           </div>
+        </section>
+
+        {/* Interiors */}
+        <section className="pt-10 mt-5">
+          <h2 className="text-3xl text-gray-600 font-semibold font-Ubuntu pb-5">
+            Interiors
+          </h2>
+
+          <div className="flex py-8 px-4 space-x-5 overflow-scroll scrollbar-hide">
+            <MediumCard img={img1} title="" />
+            <MediumCard img={img2} title="" />
+            <MediumCard img={img3} title="" />
+            <MediumCard img={img4} title="" />
+            <MediumCard img={img5} title="" />
+            <MediumCard img={img6} title="" />
+            <MediumCard img={img7} title="" />
+          </div>
+        </section>
+
+        {/* Expert Options */}
+        <section className="pt-10 mt-8">
+          <h2 className="text-3xl text-gray-600 font-semibold font-Ubuntu pb-5">
+            Expert Options
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <SmallCard
+              img="https://i.pinimg.com/474x/43/4f/da/434fdaaba64ff8f974317f42773d012b.jpg"
+              heading="Vastu"
+              desc="desc"
+            />
+            <SmallCard
+              img={threeDDesign}
+              heading="3D Exterior Design"
+              desc="desc"
+            />
+            <SmallCard
+              img="https://i.pinimg.com/474x/c6/88/d2/c688d203778f78cb71962c57a0103c6b.jpg"
+              heading="Interior"
+              desc="desc"
+            />
+          </div>
+        </section>
+
+        {/* Youtube Links */}
+        <section className="pt-10 mt-5">
+          <h2 className="text-3xl text-gray-600 font-semibold font-Ubuntu pb-5">
+            Youtube links
+          </h2>
+
+          <div className="flex py-8 px-4 space-x-5 overflow-scroll scrollbar-hide">
+            <Ytcard
+              link="https://www.youtube.com/embed/fo4oZ8xfCZk"
+              title="Village"
+            />
+            <Ytcard link="https://www.youtube.com/embed/fo4oZ8xfCZk" />
+            <Ytcard link="https://www.youtube.com/embed/fo4oZ8xfCZk" />
+            <Ytcard link="https://www.youtube.com/embed/fo4oZ8xfCZk" />
+            <Ytcard link="https://www.youtube.com/embed/fo4oZ8xfCZk" />
+          </div>
+        </section>
+
+        {/* Clients */}
+        <section>
+          <Clients />
         </section>
 
         <Footer />
