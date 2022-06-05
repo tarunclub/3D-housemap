@@ -36,7 +36,7 @@ function Header() {
               {/* Logo */}
               <Image src={logo} objectFit="contain" height={54} width={54} />
               {/* Title */}
-              <p className="font-Poppins font-bold text-purple-500 text-lg cursor-pointer">
+              <p className="font-Poppins font-bold text-blue-800 text-lg cursor-pointer">
                 3Dhousemap
               </p>
             </a>

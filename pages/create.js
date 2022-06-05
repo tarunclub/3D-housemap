@@ -25,6 +25,7 @@ function Create() {
   const descRef = useRef(null);
   const nameRef = useRef(null);
   const supplyRef = useRef(null);
+  const categoryRef = useRef(null);
   const priceRef = useRef(null);
 
   const addImageToPost = (e) => {
@@ -52,6 +53,7 @@ function Create() {
       username: session.user.name,
       description: descRef.current.value,
       supply: supplyRef.current.value,
+      category: categoryRef.current.value,
       price: priceRef.current.value,
       profileImg: session.user.image,
       timestamp: serverTimestamp(),
@@ -154,13 +156,26 @@ function Create() {
 
         <div className="flex flex-row my-10 font-Poppins">
           <div className="flex space-x-6 items-center">
-            <p className="font-Poppins font-semibold">Supply</p>
+            <p className="font-Poppins font-semibold">Quantity</p>
             <div className="border-[2px] border-dotted px-4 py-1">
               <input
                 type="number"
                 className="w-[380px] text-sm outline-none"
                 defaultValue={1}
                 ref={supplyRef}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-row my-10 font-Poppins">
+          <div className="flex space-x-6 items-center">
+            <p className="font-Poppins font-semibold">Category</p>
+            <div className="border-[2px] border-dotted px-4 py-1">
+              <input
+                type="text"
+                className="w-[380px] text-sm outline-none"
+                ref={categoryRef}
               />
             </div>
           </div>

@@ -66,9 +66,9 @@ function Product() {
   return (
     <div className="top-0 overflow-y-scroll h-screen scrollbar-hide">
       <Header />
-      <main className="flex flex-row p-4">
+      <main className="flex flex-row py-5 px-8">
         {/* Left Section */}
-        <section className="w-[550px] shadow-md shadow-gray-500 rounded-lg mr-">
+        <section className="w-[500px] shadow-md shadow-gray-500 rounded-lg ">
           <Carousel interval={3000}>
             <div className="">
               <img
@@ -123,3 +123,4 @@ function Product() {
 }
 
 export default Product;
+

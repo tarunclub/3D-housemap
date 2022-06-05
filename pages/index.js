@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Header from "../components/Header";
+import Image from "next/image";
 import Banner from "../components/Banner";
 import ProductFeed from "../components/ProductFeed";
 import Clients from "../components/Clients";
@@ -10,10 +11,8 @@ import threeDDesign from "../public/img/3Dhousemap.jpg";
 import floorplan from "../public/img/floorplan.jpg";
 import professional from "../public/img/professional.jpg";
 import budget from "../public/img/budget.jpg";
-import Delhi from "../public/img/Delhi.jpg";
-import Mumbai from "../public/img/Mumbai.jpg";
-import Kolkata from "../public/img/Kolkata.jpg";
-import Bangalore from "../public/img/Bangalore.jpg";
+import whatsapp from "../icons/whatsapp.png";
+import { PhoneIcon } from "@heroicons/react/solid";
 import MediumCard from "../components/MediumCard";
 import Footer from "../components/Footer";
 import img1 from "../img/img1.png";
@@ -34,7 +33,7 @@ export default function Home({ products }) {
       </Head>
       {/* Header */}
       <Header />
-      <main className="h-screen max-w-6xl mx-auto">
+      <main className="max-w-6xl mx-auto">
         <Banner />
 
         <ProductFeed products={products} />
@@ -61,19 +60,90 @@ export default function Home({ products }) {
           </div>
         </section>
 
-        {/* Service location */}
-        <section className="pt-10 mt-5">
-          <h2 className="text-3xl text-gray-600 font-semibold font-Ubuntu pb-5">
-            We provide our construction services in
-          </h2>
-
-          <div className="flex py-8 px-4 space-x-5 overflow-scroll scrollbar-hide">
-            <MediumCard img={Delhi} title="Delhi" />
-            <MediumCard img={Mumbai} title="Mumbai" />
-            <MediumCard img={Kolkata} title="Kolkata" />
-            <MediumCard img={Bangalore} title="Bangalore" />
-            <MediumCard img={Bangalore} title="Bangalore" />
-            <MediumCard img={Bangalore} title="Bangalore" />
+        {/* locations */}
+        <section className="flex flex-row justify-between pt-10 mt-5 space-x-6">
+          <div className="flex flex-col items-center">
+            <p className="font-Ubuntu font-bold text-blue-600 text-2xl mb-4">
+              Construction services all over india
+            </p>
+            <div className="flex flex-col space-y-4 items-center shadow-md h-[220px] shadow-gray-600 px-2 py-3 rounded-md">
+              <p className="text-sm font-Poppins text-gray-500">
+                Schedule your meeting send your name and contact
+              </p>
+              <button className=" text-blue-600 px-1 py-0.7 rounded-lg hover:bg-green-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
+                <Image src={whatsapp} height={40} width={40} />
+              </button>
+              <div className="flex space-x-2 items-center">
+                <input type="checkbox" name="termsAndconditions" id="" />
+                <p className="font-Poppins text-sm text-gray-500">
+                  terms and conditions
+                </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p className="font-Ubuntu font-bold text-blue-600 text-2xl mb-4">
+              PAN India Home interior services
+            </p>
+            <div className="flex flex-col items-center space-y-4 shadow-md shadow-gray-600 px-2 py-3 rounded-md h-[220px]">
+              <p className="font-Poppins text-sm text-gray-500">Enquire Now</p>
+              <select
+                name="locations"
+                id=""
+                className="px-6 py-1 font-Poppins input"
+              >
+                <option value="Delhi">Delhi</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Chennai">Chennai</option>
+              </select>
+              <div className="flex items-center space-x-5">
+                <button className=" text-blue-600 px-1 py-0.7 rounded-lg hover:bg-green-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
+                  <Image src={whatsapp} height={40} width={40} />
+                </button>
+                <button className=" text-blue-600 px-2 py-1 rounded-lg hover:bg-blue-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
+                  <PhoneIcon className="h-8" />
+                </button>
+              </div>
+              <div className="flex space-x-2 items-center">
+                <input type="checkbox" name="termsAndconditions" id="" />
+                <p className="text-sm font-Poppins text-gray-500">
+                  terms and Conditions
+                </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p className="font-Ubuntu font-bold text-blue-600 text-2xl mb-4">
+              Expert Option Engineer & Professionsals
+            </p>
+            <div className="flex flex-col items-center space-y-4 shadow-md shadow-gray-600 px-2 py-3 rounded-md h-[220px]">
+              <p className="font-Poppins text-sm text-gray-500">
+                Book your consultancy
+              </p>
+              <select
+                name="services"
+                id=""
+                className="input font-Poppins px-4 py-1"
+              >
+                <option value="">Home Design</option>
+                <option value="">Interior Design</option>
+                <option value="">Professionals</option>
+                <option value="">Construction</option>
+              </select>
+              <input
+                type="phone"
+                placeholder="+91"
+                className="input font-Poppins px-4 py-2"
+              />
+              <button className="btn px-12 py-1">Buy</button>
+              <div className="flex items-center space-x-2">
+                <input type="checkbox" name="termsAndconditions" id="" />
+                <p className="text-sm text-gray-500 font-Poppins">
+                  terms and conditions
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -140,9 +210,8 @@ export default function Home({ products }) {
         <section>
           <Clients />
         </section>
-
-        <Footer />
       </main>
+      <Footer />
     </div>
   );
 }

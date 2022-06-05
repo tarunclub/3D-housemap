@@ -1,4 +1,4 @@
-import { FilterIcon } from "@heroicons/react/outline";
+import { FilterIcon } from "@heroicons/react/solid";
 import Header from "../components/Header";
 import ProductFeed from "../components/ProductFeed";
 
@@ -8,11 +8,11 @@ function Search({ products }) {
       <Header />
       <main className="flex p-3 font-Poppins">
         {/* Left Section */}
-        <section className="flex flex-row px-3">
+        <section className="flex flex-row px-3 text-sm text-gray-700">
           <form>
             <div className="flex items-center space-x-3">
-              <FilterIcon className="h-6 hover:animate-bounce" />
-              <p className="text-lg">Filter</p>
+              <FilterIcon className="h-6 hover:animate-bounce text-blue-600" />
+              <p className="text-lg font-bold">Filter</p>
             </div>
             <p className="mt-5">Floors</p>
             <input type="number" className="input" />

@@ -7,7 +7,7 @@ import logo from "../icons/logo.png";
 
 function Footer() {
   return (
-    <div className=" mt-[80px] pb-[20px] bg-blue-600 rounded-md">
+    <div className=" mt-[80px] pb-[20px] w-full bg-blue-600 text-sm">
       {/* Connect Section */}
       <section className="flex flex-row mx-10 py-8">
         <div>
