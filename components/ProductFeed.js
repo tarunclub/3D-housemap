@@ -1,62 +1,73 @@
 import { useEffect, useState } from "react";
 import Product from "./Product";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
-import { db, storage } from "../firebase";
-import { useSession } from "next-auth/react";
+import { db } from "../firebase";
+import Link from "next/link";
 
-function ProductFeed({ products }) {
-  const [posts, setPosts] = useState([]);
-  const { data: session } = useSession();
+function ProductFeed() {
+  const [products, setproducts] = useState([]);
 
   useEffect(() => {
     return onSnapshot(
-      query(collection(db, "posts"), orderBy("timestamp", "desc")),
+      query(collection(db, "products"), orderBy("timestamp", "desc")),
       (snapshot) => {
-        setPosts(snapshot.docs);
+        setproducts(snapshot.docs);
       }
     );
   }, [db]);
 
   return (
     <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:-mt-28 mx-auto">
-      {posts?.slice(0, 4).map((post) => (
-        <Product
-          key={post.data().id}
-          id={post.data().id}
-          title={post.data().title}
-          price={post.data().price}
-          description={post.data().description}
-          category={post.data().category}
-          image={post.data().image}
-        />
+      {products?.slice(0, 4).map((product) => (
+        <Link href={`products/${product.id}`}>
+          <a>
+            <Product
+              key={product.data().id}
+              id={product.data().id}
+              title={product.data().title}
+              price={product.data().price}
+              description={product.data().description}
+              category={product.data().category}
+              image={product.data().image}
+            />
+          </a>
+        </Link>
       ))}
 
       <img className="md:col-span-full" src="https://links.papareact.com/dyz" />
 
       <div className="md:col-span-2">
-        {posts?.slice(4, 5).map((post) => (
-          <Product
-            key={post.data().id}
-            id={post.data().id}
-            title={post.data().title}
-            price={post.data().price}
-            description={post.data().description}
-            category={post.data().category}
-            image={post.data().image}
-          />
+        {products?.slice(4, 5).map((product) => (
+          <Link href={`products/${product.id}`}>
+            <a>
+              <Product
+                key={product.data().id}
+                id={product.data().id}
+                title={product.data().title}
+                price={product.data().price}
+                description={product.data().description}
+                category={product.data().category}
+                image={product.data().image}
+              />
+            </a>
+          </Link>
         ))}
       </div>
 
-      {posts?.slice(5, products.length).map((post) => (
-        <Product
-          key={post.data().id}
-          id={post.data().id}
-          title={post.data().title}
-          price={post.data().price}
-          description={post.data().description}
-          category={post.data().category}
-          image={post.data().image}
-        />
+      {products?.slice(5, 7).map((product) => (
+        <Link href={`products/${product.id}`}>
+          <a>
+            <Product
+              key={product.data().id}
+              id={product.data().id}
+              title={product.data().title}
+              price={product.data().price}
+              description={product.data().description}
+              category={product.data().category}
+              image={product.data().image}
+            />
+          </a>
+        </Link>
       ))}
     </div>
   );

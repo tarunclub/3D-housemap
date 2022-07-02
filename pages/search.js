@@ -1,11 +1,29 @@
 import { FilterIcon } from "@heroicons/react/solid";
 import Header from "../components/Header";
-import ProductFeed from "../components/ProductFeed";
+import { useEffect, useState } from "react";
+import Product from "../components/Product";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { db, storage } from "../firebase";
+import { useSession } from "next-auth/react";
+import MyModal from "../components/Modal";
 
 function Search({ products }) {
+  const [posts, setPosts] = useState([]);
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    return onSnapshot(
+      query(collection(db, "posts"), orderBy("timestamp", "desc")),
+      (snapshot) => {
+        setPosts(snapshot.docs);
+      }
+    );
+  }, [db]);
+
   return (
     <div>
       <Header />
+      <MyModal />
       <main className="flex p-3 font-Poppins">
         {/* Left Section */}
         <section className="flex flex-row px-3 text-sm text-gray-700">
@@ -56,7 +74,50 @@ function Search({ products }) {
 
         {/* Right Section */}
         <section className="flex-grow mt-28">
-          <ProductFeed products={products} />
+          <div className="grid grid-flow-row-dense lg:grid-cols-3 xl:grid-cols-3 md:-mt-28 mx-auto">
+            {posts?.slice(0, 4).map((post) => (
+              <Product
+                key={post.data().id}
+                id={post.data().id}
+                title={post.data().title}
+                price={post.data().price}
+                description={post.data().description}
+                category={post.data().category}
+                image={post.data().image}
+              />
+            ))}
+
+            <img
+              className="md:col-span-full"
+              src="https://links.papareact.com/dyz"
+            />
+
+            <div className="md:col-span-2">
+              {posts?.slice(4, 5).map((post) => (
+                <Product
+                  key={post.data().id}
+                  id={post.data().id}
+                  title={post.data().title}
+                  price={post.data().price}
+                  description={post.data().description}
+                  category={post.data().category}
+                  image={post.data().image}
+                />
+              ))}
+            </div>
+
+            {posts?.slice(5, products.length).map((post) => (
+              <Product
+                key={post.data().id}
+                id={post.data().id}
+                title={post.data().title}
+                price={post.data().price}
+                description={post.data().description}
+                category={post.data().category}
+                image={post.data().image}
+              />
+            ))}
+          </div>
         </section>
       </main>
     </div>

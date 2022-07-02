@@ -10,14 +10,10 @@ import { useSelector } from "react-redux";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
 import { selectItems } from "../slices/basketSlice";
-import whatsapp from "../icons/whatsapp.png";
-import Image from "next/image";
-import { PhoneIcon } from "@heroicons/react/solid";
-import instagram from "../icons/instagram.png";
-import twitter from "../icons/twitter.png";
-import linkedin from "../icons/linkedin.png";
-import Youtube from "../icons/youtube.png";
-import logo from "../icons/logo.png";
+import { Menu, Transition } from "@headlessui/react";
+import { Fragment, useEffect, useRef } from "react";
+import { ChevronDownIcon } from "@heroicons/react/solid";
+import SearchBar from "./SearchBar";
 
 function Header() {
   const { data: session } = useSession();
@@ -26,17 +22,25 @@ function Header() {
   const items = useSelector(selectItems);
 
   const [searchInput, setSearchInput] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 px-4 shadow-lg  shadow-gray-700 text-black bg-white text-sm">
-      <div className="flex items-center justify-between my-auto py-1">
+      <div className="flex items-center justify-between py-2 my-auto">
         {/* Header Left */}
         <div className="">
           <Link href="/">
             <a className="flex items-center">
               {/* Logo */}
-              <Image src={logo} objectFit="contain" height={54} width={54} />
+              {/* <Image
+                src={logo}
+                objectFit="contain"
+                height={54}
+                width={54}
+                className=""
+              /> */}
               {/* Title */}
-              <p className="font-Poppins font-bold text-blue-800 text-lg cursor-pointer">
+              <p className="font-Poppins text-blue-800 text-lg cursor-pointer">
                 3Dhousemap
               </p>
             </a>
@@ -44,8 +48,11 @@ function Header() {
         </div>
 
         {/* Header Center */}
-        <div className="">
-          <div className="flex items-center text-center border-[1px] border-gray-400 rounded-lg px-2 py-1">
+        {/* <div className="">
+          <div
+            className="relative flex items-center text-center border-[1px] border-gray-400 rounded-lg px-2 py-1"
+            onClick={() => setIsOpen(!isOpen)}
+          >
             <SearchIcon className="h-5 text-gray-600" />
             <input
               value={searchInput}
@@ -55,7 +62,8 @@ function Header() {
               className="outline-none bg-transparent text-gray-500 font-Poppins  placeholder:text-md ml-2 w-[400px]"
             />
           </div>
-        </div>
+        </div> */}
+        <SearchBar />
 
         {/* Header Right */}
         <div>
@@ -70,29 +78,69 @@ function Header() {
             </div>
             {session ? (
               <div className="cursor-pointer flex items-center">
-                <Link href="/user">
-                  <a className="flex items-center">
-                    <img
-                      src={session.user.image}
-                      className="rounded-full h-9 w-9"
-                    />
-                    <div className="flex flex-col hover:underline">
-                      <p className="text-xs ml-3">Hello</p>
-                      <p className="hover:underline text-xs ml-3">
-                        {session ? ` ${session.user.name}` : "Sign in"}
-                      </p>
+                <div className="flex items-center">
+                  <Menu as="div" className="relative inline-block text-left">
+                    <div>
+                      <Menu.Button className="inline-flex w-full justify-center rounded-md bg-black bg-opacity-10 px-4 py-1 text-sm font-medium text-white hover:bg-opacity-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-">
+                        <img
+                          src={session.user.image}
+                          className="rounded-full h-8 w-8"
+                        />
+                        <ChevronDownIcon
+                          className="ml-2 -mr-1 h-5 w-5 text-blue-300 hover:text-blue-600"
+                          aria-hidden="true"
+                        />
+                      </Menu.Button>
                     </div>
-                  </a>
-                </Link>
+                    <Transition
+                      as={Fragment}
+                      enter="transition ease-out duration-100"
+                      enterFrom="transform opacity-0 scale-95"
+                      enterTo="transform opacity-100 scale-100"
+                      leave="transition ease-in duration-75"
+                      leaveFrom="transform opacity-100 scale-100"
+                      leaveTo="transform opacity-0 scale-95"
+                    >
+                      <Menu.Items className="flex absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <div className="flex flex-col items-center px-1 py-1 ">
+                          <Menu.Item>
+                            <Link href="/user">
+                              <a>
+                                <button className="hover:bg-gray-300 py-2 w-52 px-1 rounded-md hover:text-blue-600">
+                                  Dashboard
+                                </button>
+                              </a>
+                            </Link>
+                          </Menu.Item>
 
-                <div className="ml-4">
+                          <Menu.Item>
+                            <button
+                              className="hover:bg-gray-300 py-2 w-52 px-1 rounded-md hover:text-blue-600"
+                              onClick={signOut}
+                            >
+                              Signout
+                            </button>
+                          </Menu.Item>
+                        </div>
+                      </Menu.Items>
+                    </Transition>
+                  </Menu>
+                  <div className="flex flex-col">
+                    <p className="text-xs ml-3">Hello</p>
+                    <p className="text-xs ml-3">
+                      {session ? ` ${session.user.name}` : "Sign in"}
+                    </p>
+                  </div>
+                </div>
+
+                {/* <div className="ml-4">
                   <button
                     className=" text-blue-700 font-Poppins hover:shadow-md hover:shadow-gray-700 p-2 rounded-lg hover:text-white hover:bg-blue-600 border-gray-700"
                     onClick={signOut}
                   >
                     Sign out
                   </button>
-                </div>
+                </div> */}
               </div>
             ) : (
               <button
@@ -117,115 +165,6 @@ function Header() {
           </div>
         </div>
       </div>
-      {searchInput && (
-        <div className="grid grid-cols-2 font-Poppins text-xs py-4 max-w-4xl mx-auto">
-          <section className="flex flex-col items-center space-y-3 py-3 shadow-md shadow-gray-500 rounded-xl mx-3">
-            <h3 className="text-2xl">Quick Search</h3>
-            <div className="flex flex-col items-center space-y-1">
-              <div className="flex space-x-4 items-center">
-                <form
-                  className="flex space-x-4 items-center"
-                  type="submit"
-                  action="POST"
-                >
-                  <input
-                    type="Number"
-                    placeholder="Min plot area(sqft)"
-                    className="input w-[190px]"
-                  />
-                  <input
-                    type="Number"
-                    placeholder="Max plor area(sqft)"
-                    className="input"
-                  />
-                </form>
-              </div>
-              <h3>OR</h3>
-              <div>
-                <form
-                  className="flex space-x-4 items-center"
-                  type="submit"
-                  action="POST"
-                >
-                  <input
-                    type="Number"
-                    placeholder="Width(ft)"
-                    className="input w-[190px]"
-                  />
-                  <input
-                    type="Number"
-                    placeholder="Length(ft)"
-                    className="input"
-                  />
-                </form>
-              </div>
-              <h3>Directions</h3>
-              <div className="text-black">
-                <select name="directions" id="" className="w-[300px] input">
-                  <option value="">North</option>
-                  <option value="">South</option>
-                  <option value="">East</option>
-                  <option value="">West</option>
-                  <option value="">North East</option>
-                  <option value="">South East</option>
-                  <option value="">North West</option>
-                  <option value="">South West</option>
-                </select>
-              </div>
-              <div>
-                <input type="Number" placeholder="Floors" className="input" />
-              </div>
-            </div>
-            <div className="flex items-center space-x-6">
-              <button className="button">Search</button>
-              <button className="button">Cancel</button>
-            </div>
-          </section>
-
-          <section className="flex flex-col py-7 space-y-5 items-center shadow-md h-full rounded-xl shadow-gray-300">
-            <h3 className="text-xl">Book your order for customized plan</h3>
-            <div className="flex space-x-6 items-center">
-              <button className=" text-blue-600 px-1 py-0.7 rounded-lg hover:bg-green-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
-                <Image src={whatsapp} height={40} width={40} />
-              </button>
-              <button className=" text-blue-600 px-2 py-1 rounded-lg hover:bg-blue-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
-                <PhoneIcon className="h-8" />
-              </button>
-            </div>
-
-            <div className="flex flex-col items-center">
-              <h3 className="text-xl mt-8">Connect with us</h3>
-              <div className="flex space-x-5 mt-4">
-                <div className="">
-                  <button className=" text-blue-600 px-2 py-1 rounded-lg hover:bg-[#fb3958] hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
-                    <Image src={instagram} height={25} width={25} />
-                  </button>
-                </div>
-                <div className="">
-                  <button className=" text-blue-600 px-2 py-1 rounded-lg hover:bg-blue-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
-                    <Image src={twitter} height={25} width={25} />
-                  </button>
-                </div>
-                <div className="">
-                  <button className=" text-blue-600 px-2 py-1 rounded-lg hover:bg-[#FF0000] hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
-                    <Image
-                      src={Youtube}
-                      height={25}
-                      width={25}
-                      className="text-white"
-                    />
-                  </button>
-                </div>
-                <div className="">
-                  <button className=" text-blue-600 px-2 py-1 rounded-lg hover:bg-[#0072b1] hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
-                    <Image src={linkedin} height={25} width={25} />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      )}
     </header>
   );
 }

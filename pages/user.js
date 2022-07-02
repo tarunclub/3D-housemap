@@ -9,14 +9,14 @@ import {
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import { useState, useRef } from "react";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
 import Header from "../components/Header";
 import ProductFeed from "../components/ProductFeed";
+import Upload from "../components/Upload";
 
-function User({ products }) {
+function User() {
   const [selectedFile, setSelectedFile] = useState(null);
   const filePickerRef = useRef(null);
   const [open, setOpen] = useRecoilState(modalState);
@@ -32,7 +32,6 @@ function User({ products }) {
       setSelectedFile(readerEvent.target.result);
     };
   };
-
   return (
     <div className="h-screen overflow-scroll scrollbar-hide">
       <Head>
@@ -41,10 +40,11 @@ function User({ products }) {
       <Header />
 
       {/* Top Section */}
+      <Upload />
       <section className="flex flex-col items-center mt-0">
         {/* Input */}
-        <div className="h-[200px] w-full bg-gray-300 cursor-pointer">
-          <div>
+        {/* <div className="h-[200px] w-full bg-gray-300 cursor-pointer">
+          {/* <div>
             {selectedFile ? (
               <Image src={selectedFile} onClick={() => setSelectedFile(null)} />
             ) : (
@@ -69,20 +69,21 @@ function User({ products }) {
             onChange={addImageToPost}
             className="w-full h-full cursor-pointer hidden"
             onClick={() => setOpen(true)}
-          />
+          //  */}
 
-          {/* Profile Pic */}
-          <div className="mx-auto mt-[10px] w-fit rounded-full border-8 border-white">
+        {/* Profile Pic */}
+        <div>
+          <div className="mx-auto mt-[10px] w-fit rounded-full border-8 border-gray-300">
             <img
               src={session?.user.image}
-              className="rounded-full object-fit h-40 w-40"
+              className="rounded-full object-fit h-36 w-36"
               objectFit="contain"
             />
           </div>
         </div>
 
         {/* User Info */}
-        <div className="flex flex-col items-center mx-auto mt-28">
+        <div className="flex flex-col items-center mx-auto mt-6">
           <p className="font-Poppins font-bold text-3xl">
             {session?.user.name}
           </p>
@@ -93,19 +94,18 @@ function User({ products }) {
         </div>
 
         {/* Options */}
-        <div className="flex items-center justify-between px-4 py-2 mt-28 mx-auto w-full font-semibold max-w-6xl">
-          <div className="flex items-center cursor-pointer text-blue-600">
+        <div className="flex font-Poppins items-center justify-between px-4 py-2 mt-24 mx-auto w-full font-semibold max-w-6xl">
+          <div className="flex items-center cursor-pointer active:text-blue-600 text-gray-500">
             <CollectionIcon className="h-6 " />
             <p className="font-Ubuntu ml-2 text-lg">Collection</p>
           </div>
 
-          <div>
-            <Link href="/create">
-              <a className="flex items-center cursor-pointer">
-                <PencilAltIcon className="h-6 text-gray-500" />
-                <p className="font-Ubuntu ml-2 text-lg text-gray-500">Create</p>
-              </a>
-            </Link>
+          <div
+            className="flex items-center cursor-pointer active:text-blue-600 text-gray-500"
+            onClick={() => setOpen(true)}
+          >
+            <CollectionIcon className="h-6 " />
+            <p className="font-Ubuntu ml-2 text-lg">Create</p>
           </div>
 
           <div className="flex items-center cursor-pointer">
@@ -121,22 +121,10 @@ function User({ products }) {
       </section>
       {/* Middle section */}
       <section className="mt-32 max-w-6xl mx-auto">
-        <ProductFeed products={products} />
+        <ProductFeed />
       </section>
     </div>
   );
 }
 
 export default User;
-
-export async function getServerSideProps(context) {
-  const products = await fetch("https://fakestoreapi.com/products").then(
-    (res) => res.json()
-  );
-
-  return {
-    props: {
-      products,
-    },
-  };
-}

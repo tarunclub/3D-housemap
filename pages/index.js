@@ -15,15 +15,10 @@ import whatsapp from "../icons/whatsapp.png";
 import { PhoneIcon } from "@heroicons/react/solid";
 import MediumCard from "../components/MediumCard";
 import Footer from "../components/Footer";
-import img1 from "../img/img1.png";
-import img2 from "../img/img2.png";
-import img3 from "../img/img3.png";
-import img4 from "../img/img4.png";
-import img5 from "../img/img5.png";
-import img6 from "../img/img6.png";
-import img7 from "../img/img7.png";
+import MyModal from "../components/Modal";
+import Interiors from "../components/Interiors";
 
-export default function Home({ products }) {
+export default function Home() {
   return (
     <div className="h-screen overflow-scroll scrollbar-hide">
       <Head>
@@ -36,7 +31,10 @@ export default function Home({ products }) {
       <main className="max-w-6xl mx-auto">
         <Banner />
 
-        <ProductFeed products={products} />
+        <ProductFeed />
+
+        {/* modal */}
+        <MyModal />
 
         {/* Services */}
         <section className="pt-10 mt-8">
@@ -63,7 +61,7 @@ export default function Home({ products }) {
         {/* locations */}
         <section className="flex flex-row justify-between pt-10 mt-5 space-x-6">
           <div className="flex flex-col items-center">
-            <p className="font-Ubuntu font-bold text-blue-600 text-2xl mb-4">
+            <p className="font-Poppins text-gray-500 text-2xl mb-4">
               Construction services all over india
             </p>
             <div className="flex flex-col space-y-4 items-center shadow-md h-[220px] shadow-gray-600 px-2 py-3 rounded-md">
@@ -82,7 +80,7 @@ export default function Home({ products }) {
             </div>
           </div>
           <div>
-            <p className="font-Ubuntu font-bold text-blue-600 text-2xl mb-4">
+            <p className="font-Poppins text-gray-500 text-2xl mb-4">
               PAN India Home interior services
             </p>
             <div className="flex flex-col items-center space-y-4 shadow-md shadow-gray-600 px-2 py-3 rounded-md h-[220px]">
@@ -114,7 +112,7 @@ export default function Home({ products }) {
             </div>
           </div>
           <div>
-            <p className="font-Ubuntu font-bold text-blue-600 text-2xl mb-4">
+            <p className="font-Poppins text-gray-500 text-2xl mb-4">
               Expert Option Engineer & Professionsals
             </p>
             <div className="flex flex-col items-center space-y-4 shadow-md shadow-gray-600 px-2 py-3 rounded-md h-[220px]">
@@ -152,15 +150,8 @@ export default function Home({ products }) {
           <h2 className="text-3xl text-gray-600 font-semibold font-Ubuntu pb-5">
             Interiors
           </h2>
-
-          <div className="flex py-8 px-4 space-x-5 overflow-scroll scrollbar-hide">
-            <MediumCard img={img1} title="" />
-            <MediumCard img={img2} title="" />
-            <MediumCard img={img3} title="" />
-            <MediumCard img={img4} title="" />
-            <MediumCard img={img5} title="" />
-            <MediumCard img={img6} title="" />
-            <MediumCard img={img7} title="" />
+          <div className="max-w-6xl mx-auto">
+            <Interiors />
           </div>
         </section>
 
@@ -214,16 +205,4 @@ export default function Home({ products }) {
       <Footer />
     </div>
   );
-}
-
-export async function getServerSideProps(context) {
-  const products = await fetch("https://fakestoreapi.com/products").then(
-    (res) => res.json()
-  );
-
-  return {
-    props: {
-      products,
-    },
-  };
 }
