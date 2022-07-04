@@ -1,11 +1,11 @@
 // import { loadStripe } from "@stripe/stripe-js";
 // import axios from "axios";
-import { useSession } from "next-auth/react";
-import Image from "next/image";
-import { useSelector } from "react-redux";
-import CheckoutProduct from "../components/CheckoutProduct";
-import Header from "../components/Header";
-import { selectItems, selectTotal } from "../slices/basketSlice";
+import { useSession } from 'next-auth/react';
+import Image from 'next/image';
+import { useSelector } from 'react-redux';
+import CheckoutProduct from '../components/CheckoutProduct';
+import Header from '../components/Header';
+import { selectItems, selectTotal } from '../slices/basketSlice';
 
 function Checkout({ onClick }) {
   const items = useSelector(selectItems);
@@ -13,27 +13,25 @@ function Checkout({ onClick }) {
   const session = useSession();
 
   const makePayment = async () => {
-    console.log("here...");
+    console.log('here...');
     const res = await initializeRazorpay();
 
     if (!res) {
-      alert("Razorpay SDK Failed to load");
+      alert('Razorpay SDK Failed to load');
       return;
     }
 
     // Make API call to the serverless API
-    const data = await fetch("/api/razorpay", { method: "POST" }).then((t) =>
-      t.json()
-    );
+    const data = await fetch('/api/razorpay', { method: 'POST' }).then((t) => t.json());
     console.log(data);
     var options = {
       key: process.env.RAZORPAY_API_KEY, // Enter the Key ID generated from the Dashboard
-      name: "3D HouseMap Pvt Ltd",
+      name: '3D HouseMap Pvt Ltd',
       currency: data.currency,
       amount: data.amount,
       order_id: data.id,
-      description: "Thankyou for your order",
-      image: "",
+      description: 'Thankyou for your order',
+      image: '',
       handler: function (response) {
         // Validate payment at server - using webhooks is a better idea.
         alert(response.razorpay_payment_id);
@@ -41,10 +39,10 @@ function Checkout({ onClick }) {
         alert(response.razorpay_signature);
       },
       prefill: {
-        name: "Tarun",
-        email: "tarunk1004@gmail.com",
-        contact: "9871726301",
-      },
+        name: 'Tarun',
+        email: 'tarunk1004@gmail.com',
+        contact: '9871726301'
+      }
     };
 
     const paymentObject = new window.Razorpay(options);
@@ -52,8 +50,8 @@ function Checkout({ onClick }) {
   };
   const initializeRazorpay = () => {
     return new Promise((resolve) => {
-      const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      const script = document.createElement('script');
+      script.src = 'https://checkout.razorpay.com/v1/checkout.js';
       // document.body.appendChild(script);
 
       script.onload = () => {
@@ -74,6 +72,7 @@ function Checkout({ onClick }) {
         {/* Left */}
         <div className="flex-grow m-5 rounded-lg">
           <Image
+            alt="avatar"
             src="https://links.papareact.com/ikj"
             width={920}
             height={250}
@@ -82,7 +81,7 @@ function Checkout({ onClick }) {
 
           <div className="p-5 space-y-10 ">
             <h1 className="text-3xl border-b border-gray-600 pb-4 font-Ubuntu font-bold">
-              {items.length === 0 ? "Your Basket is empty" : "Shopping Basket"}
+              {items.length === 0 ? 'Your Basket is empty' : 'Shopping Basket'}
             </h1>
 
             {items.map(({ title, category, rating, price, image, id }, i) => (
@@ -116,9 +115,8 @@ function Checkout({ onClick }) {
                 onClick={makePayment}
                 type="submit"
                 className="btn mt-2 whitespace-nowrap"
-                disabled={!session}
-              >
-                {!session ? "Sign in to Checkout" : "Proceed to Checkout"}
+                disabled={!session}>
+                {!session ? 'Sign in to Checkout' : 'Proceed to Checkout'}
               </button>
             </>
           )}

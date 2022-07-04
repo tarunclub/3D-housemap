@@ -1,18 +1,18 @@
-import { PlayIcon } from "@heroicons/react/solid";
-import Image from "next/image";
-import img1 from "../img/imageOne.jpg";
-import Cards from "./Cards";
-import Post from "./Post";
-import nft1 from "../img/nft1.jpg";
-import nft2 from "../img/nft2.jpg";
-import nft3 from "../img/nft3.jpg";
-import nft4 from "../img/nft4.jpg";
-import nft5 from "../img/nft5.jpg";
-import nft6 from "../img/nft6.jpg";
-import nft7 from "../img/nft7.jpg";
-import Footer from "./Footer";
-import Posts from "./Posts";
-import Link from "next/link";
+import { PlayIcon } from '@heroicons/react/solid';
+import Image from 'next/image';
+import img1 from '../img/imageOne.jpg';
+import Cards from './Cards';
+import Post from './Post';
+import nft1 from '../img/nft1.jpg';
+import nft2 from '../img/nft2.jpg';
+import nft3 from '../img/nft3.jpg';
+import nft4 from '../img/nft4.jpg';
+import nft5 from '../img/nft5.jpg';
+import nft6 from '../img/nft6.jpg';
+import nft7 from '../img/nft7.jpg';
+import Footer from './Footer';
+import Posts from './Posts';
+import Link from 'next/link';
 
 function Body() {
   return (
@@ -26,8 +26,7 @@ function Body() {
           </p>
           {/* Desc */}
           <p className="font-Poppins text-white font-semibold mt-[10px]">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora,
-            ex.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, ex.
           </p>
           <div className="flex space-x-9 mt-[50px]">
             <button className="bg-blue-600 px-8 py-2 mr-4 text-md rounded-lg text-white font-Poppins font-semibold border-gray-400 hover:bg-white hover:shadow-md hover:shadow-gray-700 hover:text-blue-600 transform transition duration-200">
@@ -42,9 +41,7 @@ function Body() {
 
           {/* Bottom */}
           <div className="flex mt-[80px] cursor-pointer hover:">
-            <p className="font-Poppins font-bold text-white ">
-              Learn more about Ghar Naksha
-            </p>
+            <p className="font-Poppins font-bold text-white ">Learn more about Ghar Naksha</p>
             <PlayIcon className="h-6 text-red-600 ml-1 hover:transition duration-75 hover:rotate-45" />
           </div>
         </div>
@@ -52,12 +49,7 @@ function Body() {
         {/* Right Side */}
         <div className="font-Ubuntu text-5xl">
           <div className="mx-[20px] mt-[30px] shadow-gray-800 rounded-lg shadow-lg">
-            <Image
-              src={img1}
-              height={700}
-              width={700}
-              className="rounded-2xl"
-            />
+            <Image alt="avatar" src={img1 || ''} height={700} width={700} className="rounded-2xl" />
           </div>
         </div>
       </section>

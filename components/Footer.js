@@ -1,9 +1,9 @@
-import Image from "next/image";
-import instagram from "../icons/instagram.png";
-import twitter from "../icons/twitter.png";
-import linkedin from "../icons/linkedin.png";
-import Youtube from "../icons/youtube.png";
-import logo from "../icons/logo.png";
+import Image from 'next/image';
+import instagram from '../icons/instagram.png';
+import twitter from '../icons/twitter.png';
+import linkedin from '../icons/linkedin.png';
+import Youtube from '../icons/youtube.png';
+import logo from '../icons/logo.png';
 
 function Footer() {
   return (
@@ -41,27 +41,22 @@ function Footer() {
           <div className="flex space-x-5 mt-4">
             <div>
               <button className=" text-blue-600 px-2 py-1 rounded-lg hover:bg-[#fb3958] hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
-                <Image src={instagram} height={25} width={25} />
+                <Image alt="insta" src={instagram} height={25} width={25} />
               </button>
             </div>
             <div className="">
               <button className=" text-blue-600 px-2 py-1 rounded-lg hover:bg-blue-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
-                <Image src={twitter} height={25} width={25} />
+                <Image alt="twitter" src={twitter} height={25} width={25} />
               </button>
             </div>
             <div className="">
               <button className=" text-blue-600 px-2 py-1 rounded-lg hover:bg-[#FF0000] hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
-                <Image
-                  src={Youtube}
-                  height={25}
-                  width={25}
-                  className="text-white"
-                />
+                <Image alt="youtube" src={Youtube} height={25} width={25} className="text-white" />
               </button>
             </div>
             <div className="">
               <button className=" text-blue-600 px-2 py-1 rounded-lg hover:bg-[#0072b1] hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
-                <Image src={linkedin} height={25} width={25} />
+                <Image alt="linkedin" src={linkedin} height={25} width={25} />
               </button>
             </div>
           </div>
@@ -73,7 +68,7 @@ function Footer() {
       <section className="flex flex-row justify-between mx-10 mt-5">
         <div>
           <p className="flex items-center font-Poppins text-3xl cursor-pointer text-white">
-            <Image src={logo} objectFit="contain" height={54} width={54} />
+            <Image alt="logo" src={logo} objectFit="contain" height={54} width={54} />
             3Dhousemap
           </p>
           <p className="text-white mt-5 text-lg font-Poppins">
@@ -81,72 +76,35 @@ function Footer() {
           </p>
         </div>
         <div>
-          <p className="text-lg font-Poppins font-bold text-white cursor-pointer">
-            My Account
-          </p>
+          <p className="text-lg font-Poppins font-bold text-white cursor-pointer">My Account</p>
           <div className="space-y-3 mt-3">
-            <p className="text-md text-white font-Poppins cursor-pointer">
-              Lorem, ipsum.
-            </p>
-            <p className="text-md text-white font-Poppins cursor-pointer">
-              Lorem, ipsum.
-            </p>
-            <p className="text-md text-white font-Poppins cursor-pointer">
-              Lorem, ipsum.
-            </p>
-            <p className="text-md text-white font-Poppins cursor-pointer">
-              Lorem, ipsum.
-            </p>
-            <p className="text-md text-white font-Poppins cursor-pointer">
-              Lorem, ipsum.
-            </p>
+            <p className="text-md text-white font-Poppins cursor-pointer">Lorem, ipsum.</p>
+            <p className="text-md text-white font-Poppins cursor-pointer">Lorem, ipsum.</p>
+            <p className="text-md text-white font-Poppins cursor-pointer">Lorem, ipsum.</p>
+            <p className="text-md text-white font-Poppins cursor-pointer">Lorem, ipsum.</p>
+            <p className="text-md text-white font-Poppins cursor-pointer">Lorem, ipsum.</p>
           </div>
         </div>
         <div>
-          <p className="text-lg font-Poppins font-bold text-white cursor-pointer">
-            Resources
-          </p>
+          <p className="text-lg font-Poppins font-bold text-white cursor-pointer">Resources</p>
           <div className="space-y-3 mt-3">
-            <p className="text-md text-white font-Poppins cursor-pointer">
+            <p className="text-md text-white font-Poppins cursor-pointer">Lorem, ipsum.</p>
+            <p cursor-pointerp className="text-md text-white font-Poppins cursor-pointer">
               Lorem, ipsum.
             </p>
-            <p
-              cursor-pointerp
-              className="text-md text-white font-Poppins cursor-pointer"
-            >
-              Lorem, ipsum.
-            </p>
-            <p className="text-md text-white font-Poppins cursor-pointer">
-              Lorem, ipsum.
-            </p>
-            <p className="text-md text-white font-Poppins cursor-pointer">
-              Lorem, ipsum.
-            </p>
-            <p className="text-md text-white font-Poppins cursor-pointer">
-              Lorem, ipsum.
-            </p>
+            <p className="text-md text-white font-Poppins cursor-pointer">Lorem, ipsum.</p>
+            <p className="text-md text-white font-Poppins cursor-pointer">Lorem, ipsum.</p>
+            <p className="text-md text-white font-Poppins cursor-pointer">Lorem, ipsum.</p>
           </div>
         </div>
         <div>
-          <p className="text-lg font-Poppins font-bold text-white cursor-pointer">
-            Company
-          </p>
+          <p className="text-lg font-Poppins font-bold text-white cursor-pointer">Company</p>
           <div className="space-y-3 mt-3">
-            <p className="text-md text-white font-Poppins cursor-pointer">
-              Lorem, ipsum.
-            </p>
-            <p className="text-md text-white font-Poppins cursor-pointer">
-              Lorem, ipsum.
-            </p>
-            <p className="text-md text-white font-Poppins cursor-pointer">
-              Lorem, ipsum.
-            </p>
-            <p className="text-md text-white font-Poppins cursor-pointer">
-              Lorem, ipsum.
-            </p>
-            <p className="text-md text-white font-Poppins cursor-pointer">
-              Lorem, ipsum.
-            </p>
+            <p className="text-md text-white font-Poppins cursor-pointer">Lorem, ipsum.</p>
+            <p className="text-md text-white font-Poppins cursor-pointer">Lorem, ipsum.</p>
+            <p className="text-md text-white font-Poppins cursor-pointer">Lorem, ipsum.</p>
+            <p className="text-md text-white font-Poppins cursor-pointer">Lorem, ipsum.</p>
+            <p className="text-md text-white font-Poppins cursor-pointer">Lorem, ipsum.</p>
           </div>
         </div>
       </section>

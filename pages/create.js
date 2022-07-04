@@ -1,20 +1,15 @@
-import React from "react";
-import { useState, useRef } from "react";
-import { PhotographIcon } from "@heroicons/react/solid";
-import { useRecoilState } from "recoil";
-import { modalState } from "../atoms/modalAtom";
-import Header from "../components/Header";
-import { db, storage } from "../firebase";
-import {
-  addDoc,
-  collection,
-  doc,
-  serverTimestamp,
-  updateDoc,
-} from "firebase/firestore";
-import { useSession } from "next-auth/react";
-import { ref, getDownloadURL, uploadString } from "firebase/storage";
-import Head from "next/head";
+import React from 'react';
+import { useState, useRef } from 'react';
+import { PhotographIcon } from '@heroicons/react/solid';
+import { useRecoilState } from 'recoil';
+import { modalState } from '../atoms/modalAtom';
+import Header from '../components/Header';
+import { db, storage } from '../firebase';
+import { addDoc, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore';
+import { useSession } from 'next-auth/react';
+import { ref, getDownloadURL, uploadString } from 'firebase/storage';
+import Head from 'next/head';
+import Image from 'next/image';
 
 function Create() {
   const { data: session } = useSession();
@@ -49,29 +44,27 @@ function Create() {
     // Upload the image to firebase storage
     // get a download URL from firebase storage
 
-    const docRef = await addDoc(collection(db, "posts"), {
+    const docRef = await addDoc(collection(db, 'posts'), {
       username: session.user.name,
       description: descRef.current.value,
       supply: supplyRef.current.value,
       category: categoryRef.current.value,
       price: priceRef.current.value,
       profileImg: session.user.image,
-      timestamp: serverTimestamp(),
+      timestamp: serverTimestamp()
     });
 
-    console.log("New doc added with ID", docRef.id);
+    console.log('New doc added with ID', docRef.id);
     console.log(session);
 
     const imageRef = ref(storage, `posts/${docRef.id}/image`);
 
-    await uploadString(imageRef, selectedFile, "data_url").then(
-      async (snapshot) => {
-        const downloadURL = await getDownloadURL(imageRef);
-        await updateDoc(doc(db, "posts", docRef.id), {
-          image: downloadURL,
-        });
-      }
-    );
+    await uploadString(imageRef, selectedFile, 'data_url').then(async (snapshot) => {
+      const downloadURL = await getDownloadURL(imageRef);
+      await updateDoc(doc(db, 'posts', docRef.id), {
+        image: downloadURL
+      });
+    });
     setOpen(false);
     setLoading(false);
     setSelectedFile(null);
@@ -84,26 +77,24 @@ function Create() {
       </Head>
       <Header />
       <div className="flex flex-col items-center my-8">
-        <p className="text-3xl font-Poppins font-extrabold mb-1">
-          Create New Item
-        </p>
-        <p className="text-lg font-Ubuntu text-blue-600 mb-6">
-          Image, Video, Audio, or 3D Model
-        </p>
+        <p className="text-3xl font-Poppins font-extrabold mb-1">Create New Item</p>
+        <p className="text-lg font-Ubuntu text-blue-600 mb-6">Image, Video, Audio, or 3D Model</p>
         <p className="text-gray-500 text-xs font-Poppins font-semibold mb-3">
-          File types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG,
-          GLB, GLTF. Max size: 100 MB
+          File types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF. Max size:
+          100 MB
         </p>
         {/* Input */}
         <div className="h-[400px] w-[400px] border-2 border-dotted border-gray-400 rounded-xl">
           <div>
             {selectedFile ? (
-              <img src={selectedFile} onClick={() => setSelectedFile(null)} />
+              <Image
+                alt="file-selected"
+                layout="fill"
+                src={selectedFile || ''}
+                onClick={() => setSelectedFile(null)}
+              />
             ) : (
-              <div
-                onClick={() => filePickerRef.current.click()}
-                className="flex ml-32 my-32"
-              >
+              <div onClick={() => filePickerRef.current.click()} className="flex ml-32 my-32">
                 <PhotographIcon
                   className="text-gray-300 inline cursor-pointer h-32"
                   aria-hidden="true"
@@ -172,11 +163,7 @@ function Create() {
           <div className="flex space-x-6 items-center">
             <p className="font-Poppins font-semibold">Category</p>
             <div className="border-[2px] border-dotted px-4 py-1">
-              <input
-                type="text"
-                className="w-[380px] text-sm outline-none"
-                ref={categoryRef}
-              />
+              <input type="text" className="w-[380px] text-sm outline-none" ref={categoryRef} />
             </div>
           </div>
         </div>
@@ -199,9 +186,8 @@ function Create() {
           <button
             disabled={!selectedFile || !session}
             className="border-[1px] border-gray-400 text-blue-600 px-8 py-2 text-md rounded-lg font-Poppins font-semibold hover:bg-blue-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600 cursor-pointer"
-            onClick={uploadPost}
-          >
-            {loading ? "Uploading" : "Create"}
+            onClick={uploadPost}>
+            {loading ? 'Uploading' : 'Create'}
           </button>
         </div>
       </div>

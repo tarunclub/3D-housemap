@@ -1,17 +1,9 @@
-import { StarIcon } from "@heroicons/react/solid";
-import Image from "next/image";
-import { useDispatch } from "react-redux";
-import { addToBasket, removeFromBasket } from "../slices/basketSlice";
+import { StarIcon } from '@heroicons/react/solid';
+import Image from 'next/image';
+import { useDispatch } from 'react-redux';
+import { addToBasket, removeFromBasket } from '../slices/basketSlice';
 
-function CheckoutProduct({
-  id,
-  title,
-  price,
-  rating,
-  category,
-  image,
-  description,
-}) {
+function CheckoutProduct({ id, title, price, rating, category, image, description }) {
   const dispatch = useDispatch();
 
   const addItemToBasket = () => {
@@ -22,7 +14,7 @@ function CheckoutProduct({
       rating,
       category,
       image,
-      description,
+      description
     };
 
     // Push item into redux
@@ -35,7 +27,7 @@ function CheckoutProduct({
 
   return (
     <div className="grid grid-cols-5 flex-col cursor-pointer bg-white z-30 m-5 p-10 font-Poppins shadow-lg shadow-gray-300 rounded-lg text-black hover:scale-105 transform transition duration-500 ease-out">
-      <Image src={image} height={200} width={200} objectFit="contain" />
+      <Image alt="image" src={image || ''} height={200} width={200} objectFit="contain" />
 
       {/* Middle */}
       <div className="col-span-3 mx-5 py-4 flex flex-col">
@@ -58,10 +50,7 @@ function CheckoutProduct({
         <button className="btn mt-auto" onClick={addItemToBasket}>
           Add to Basket
         </button>
-        <button
-          className="btn mt-auto whitespace-nowrap"
-          onClick={removeItemFromBasket}
-        >
+        <button className="btn mt-auto whitespace-nowrap" onClick={removeItemFromBasket}>
           Remove from Basket
         </button>
       </div>

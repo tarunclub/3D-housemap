@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
-import { db } from "../firebase";
-import Post from "./Post";
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { db } from '../firebase';
+import Post from './Post';
 
 function Posts() {
   const [posts, setPosts] = useState([]);
@@ -10,11 +10,12 @@ function Posts() {
   useEffect(() => {
     () =>
       onSnapshot(
-        query(getDocs(collection(db, "posts")), orderBy("timestamp", "desc")),
+        query(getDocs(collection(db, 'posts')), orderBy('timestamp', 'desc')),
         (snapshot) => {
           setPosts(snapshot.docs);
         }
       );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [db]);
 
   return (

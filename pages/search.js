@@ -1,23 +1,22 @@
-import { FilterIcon } from "@heroicons/react/solid";
-import Header from "../components/Header";
-import { useEffect, useState } from "react";
-import Product from "../components/Product";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
-import { db, storage } from "../firebase";
-import { useSession } from "next-auth/react";
-import MyModal from "../components/Modal";
+import { FilterIcon } from '@heroicons/react/solid';
+import Header from '../components/Header';
+import { useEffect, useState } from 'react';
+import Product from '../components/Product';
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { db, storage } from '../firebase';
+import { useSession } from 'next-auth/react';
+import MyModal from '../components/Modal';
+import Image from 'next/image';
 
 function Search({ products }) {
   const [posts, setPosts] = useState([]);
   const { data: session } = useSession();
 
   useEffect(() => {
-    return onSnapshot(
-      query(collection(db, "posts"), orderBy("timestamp", "desc")),
-      (snapshot) => {
-        setPosts(snapshot.docs);
-      }
-    );
+    return onSnapshot(query(collection(db, 'posts'), orderBy('timestamp', 'desc')), (snapshot) => {
+      setPosts(snapshot.docs);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [db]);
 
   return (
@@ -51,16 +50,8 @@ function Search({ products }) {
 
             <p className="mt-5">Dimensions</p>
             <div className="space-y-5">
-              <input
-                type="Number"
-                placeholder="Min plot area(sqft)"
-                className="input"
-              />
-              <input
-                type="Number"
-                placeholder="Max plor area(sqft)"
-                className="input"
-              />
+              <input type="Number" placeholder="Min plot area(sqft)" className="input" />
+              <input type="Number" placeholder="Max plor area(sqft)" className="input" />
 
               <p className="">Or</p>
 
@@ -87,7 +78,9 @@ function Search({ products }) {
               />
             ))}
 
-            <img
+            <Image
+              layout="fill"
+              alt="avatar"
               className="md:col-span-full"
               src="https://links.papareact.com/dyz"
             />
@@ -127,13 +120,11 @@ function Search({ products }) {
 export default Search;
 
 export async function getServerSideProps(context) {
-  const products = await fetch("https://fakestoreapi.com/products").then(
-    (res) => res.json()
-  );
+  const products = await fetch('https://fakestoreapi.com/products').then((res) => res.json());
 
   return {
     props: {
-      products,
-    },
+      products
+    }
   };
 }

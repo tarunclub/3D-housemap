@@ -1,13 +1,7 @@
-import React, { useEffect, useState } from "react";
-import {
-  collection,
-  onSnapshot,
-  orderBy,
-  query,
-  where,
-} from "firebase/firestore";
-import { db } from "../firebase";
-import Product from "./Product";
+import React, { useEffect, useState } from 'react';
+import { collection, onSnapshot, orderBy, query, where } from 'firebase/firestore';
+import { db } from '../firebase';
+import Product from './Product';
 
 function Interiors() {
   const [products, setproducts] = useState([]);
@@ -15,14 +9,15 @@ function Interiors() {
   useEffect(() => {
     return onSnapshot(
       query(
-        collection(db, "products"),
-        orderBy("timestamp", "desc"),
-        where("category", "==", "Interior")
+        collection(db, 'products'),
+        orderBy('timestamp', 'desc'),
+        where('category', '==', 'Interior')
       ),
       (snapshot) => {
         setproducts(snapshot.docs);
       }
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [db]);
   return (
     <div className="grid grid-flow-row-dense md:grid-rows-1 lg:grid-cols-3 xl:grid-cols-4 mx-auto overflow-x-scroll">

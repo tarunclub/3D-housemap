@@ -1,18 +1,17 @@
-import { useState } from "react";
-import { StarIcon } from "@heroicons/react/solid";
-import { useDispatch } from "react-redux";
-import { addToBasket } from "../slices/basketSlice";
-import { useSession } from "next-auth/react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { useState } from 'react';
+import { StarIcon } from '@heroicons/react/solid';
+import { useDispatch } from 'react-redux';
+import { addToBasket } from '../slices/basketSlice';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 const MAX_RATING = 5;
 const MIN_RATING = 1;
 
 function Product({ key, id, title, price, category, image, description }) {
-  const [rating] = useState(
-    Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1) + MIN_RATING)
-  );
+  const [rating] = useState(Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1) + MIN_RATING));
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -25,7 +24,7 @@ function Product({ key, id, title, price, category, image, description }) {
       price,
       category,
       description,
-      image,
+      image
     };
 
     // Sending the product to redux store
@@ -47,19 +46,19 @@ function Product({ key, id, title, price, category, image, description }) {
             </div>
             <Link href="/user">
               <a className="flex items-center mx-auto">
-                <img
-                  src={session.user.image}
+                <Image
+                  alt="avatar"
+                  src={session?.user?.image || 'https://via.placeholder.com/150'}
                   className="rounded-full h-9 w-9 object-contain"
                 />
               </a>
             </Link>
           </div>
         ) : null}
-        <p className="absolute top-4 right-2 text-xs text-gray-400">
-          {category}
-        </p>
+        <p className="absolute top-4 right-2 text-xs text-gray-400">{category}</p>
 
-        <img
+        <Image
+          alt="soome-img"
           src={image}
           className="object-cover w-full h-[200px] my-4 rounded-lg"
         />
@@ -69,13 +68,11 @@ function Product({ key, id, title, price, category, image, description }) {
           {Array(rating)
             .fill()
             .map((_, i) => (
-              <StarIcon className="h-5 text-yellow-500" />
+              <StarIcon key={i} className="h-5 text-yellow-500" />
             ))}
         </div>
 
-        <p className="text-xs my-1 lg:line-clamp-2 text-gray-500">
-          {description}
-        </p>
+        <p className="text-xs my-1 lg:line-clamp-2 text-gray-500">{description}</p>
 
         <div className="mb-3">
           <p className="font-semibold">₹{price}</p>

@@ -1,22 +1,22 @@
-import Head from "next/head";
-import Header from "../components/Header";
-import Image from "next/image";
-import Banner from "../components/Banner";
-import ProductFeed from "../components/ProductFeed";
-import Clients from "../components/Clients";
-import SmallCard from "../components/SmallCard";
-import Ytcard from "../components/Ytcard";
-import twoDDesign from "../public/img/2DHouseMap.jpg";
-import threeDDesign from "../public/img/3Dhousemap.jpg";
-import floorplan from "../public/img/floorplan.jpg";
-import professional from "../public/img/professional.jpg";
-import budget from "../public/img/budget.jpg";
-import whatsapp from "../icons/whatsapp.png";
-import { PhoneIcon } from "@heroicons/react/solid";
-import MediumCard from "../components/MediumCard";
-import Footer from "../components/Footer";
-import MyModal from "../components/Modal";
-import Interiors from "../components/Interiors";
+import Head from 'next/head';
+import Header from '../components/Header';
+import Image from 'next/image';
+import Banner from '../components/Banner';
+import ProductFeed from '../components/ProductFeed';
+import Clients from '../components/Clients';
+import SmallCard from '../components/SmallCard';
+import Ytcard from '../components/Ytcard';
+import twoDDesign from '../public/img/2DHouseMap.jpg';
+import threeDDesign from '../public/img/3Dhousemap.jpg';
+import floorplan from '../public/img/floorplan.jpg';
+import professional from '../public/img/professional.jpg';
+import budget from '../public/img/budget.jpg';
+import whatsapp from '../icons/whatsapp.png';
+import { PhoneIcon } from '@heroicons/react/solid';
+import MediumCard from '../components/MediumCard';
+import Footer from '../components/Footer';
+import MyModal from '../components/Modal';
+import Interiors from '../components/Interiors';
 
 export default function Home() {
   return (
@@ -38,22 +38,12 @@ export default function Home() {
 
         {/* Services */}
         <section className="pt-10 mt-8">
-          <h2 className="text-3xl text-gray-600 font-semibold font-Ubuntu pb-5">
-            Services
-          </h2>
+          <h2 className="text-3xl text-gray-600 font-semibold font-Ubuntu pb-5">Services</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             <SmallCard img={twoDDesign} heading="2D House Design" desc="desc" />
-            <SmallCard
-              img={threeDDesign}
-              heading="3D Exterior Design"
-              desc="desc"
-            />
+            <SmallCard img={threeDDesign} heading="3D Exterior Design" desc="desc" />
             <SmallCard img={floorplan} heading="Floor Plans" desc="desc" />
-            <SmallCard
-              img={professional}
-              heading="Professional Designs"
-              desc="desc"
-            />
+            <SmallCard img={professional} heading="Professional Designs" desc="desc" />
             <SmallCard img={budget} heading="Budget" desc="desc" />
           </div>
         </section>
@@ -69,13 +59,11 @@ export default function Home() {
                 Schedule your meeting send your name and contact
               </p>
               <button className=" text-blue-600 px-1 py-0.7 rounded-lg hover:bg-green-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
-                <Image src={whatsapp} height={40} width={40} />
+                <Image alt="whatsapp" src={whatsapp} height={40} width={40} />
               </button>
               <div className="flex space-x-2 items-center">
                 <input type="checkbox" name="termsAndconditions" id="" />
-                <p className="font-Poppins text-sm text-gray-500">
-                  terms and conditions
-                </p>
+                <p className="font-Poppins text-sm text-gray-500">terms and conditions</p>
               </div>
             </div>
           </div>
@@ -85,11 +73,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col items-center space-y-4 shadow-md shadow-gray-600 px-2 py-3 rounded-md h-[220px]">
               <p className="font-Poppins text-sm text-gray-500">Enquire Now</p>
-              <select
-                name="locations"
-                id=""
-                className="px-6 py-1 font-Poppins input"
-              >
+              <select name="locations" id="" className="px-6 py-1 font-Poppins input">
                 <option value="Delhi">Delhi</option>
                 <option value="Mumbai">Mumbai</option>
                 <option value="Kolkata">Kolkata</option>
@@ -97,7 +81,7 @@ export default function Home() {
               </select>
               <div className="flex items-center space-x-5">
                 <button className=" text-blue-600 px-1 py-0.7 rounded-lg hover:bg-green-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
-                  <Image src={whatsapp} height={40} width={40} />
+                  <Image alt="whatsapp" src={whatsapp} height={40} width={40} />
                 </button>
                 <button className=" text-blue-600 px-2 py-1 rounded-lg hover:bg-blue-600 hover:text-white transition duration-200 hover:shadow-md hover:shadow-gray-600">
                   <PhoneIcon className="h-8" />
@@ -105,9 +89,7 @@ export default function Home() {
               </div>
               <div className="flex space-x-2 items-center">
                 <input type="checkbox" name="termsAndconditions" id="" />
-                <p className="text-sm font-Poppins text-gray-500">
-                  terms and Conditions
-                </p>
+                <p className="text-sm font-Poppins text-gray-500">terms and Conditions</p>
               </div>
             </div>
           </div>
@@ -116,30 +98,18 @@ export default function Home() {
               Expert Option Engineer & Professionsals
             </p>
             <div className="flex flex-col items-center space-y-4 shadow-md shadow-gray-600 px-2 py-3 rounded-md h-[220px]">
-              <p className="font-Poppins text-sm text-gray-500">
-                Book your consultancy
-              </p>
-              <select
-                name="services"
-                id=""
-                className="input font-Poppins px-4 py-1"
-              >
+              <p className="font-Poppins text-sm text-gray-500">Book your consultancy</p>
+              <select name="services" id="" className="input font-Poppins px-4 py-1">
                 <option value="">Home Design</option>
                 <option value="">Interior Design</option>
                 <option value="">Professionals</option>
                 <option value="">Construction</option>
               </select>
-              <input
-                type="phone"
-                placeholder="+91"
-                className="input font-Poppins px-4 py-2"
-              />
+              <input type="phone" placeholder="+91" className="input font-Poppins px-4 py-2" />
               <button className="btn px-12 py-1">Buy</button>
               <div className="flex items-center space-x-2">
                 <input type="checkbox" name="termsAndconditions" id="" />
-                <p className="text-sm text-gray-500 font-Poppins">
-                  terms and conditions
-                </p>
+                <p className="text-sm text-gray-500 font-Poppins">terms and conditions</p>
               </div>
             </div>
           </div>
@@ -147,9 +117,7 @@ export default function Home() {
 
         {/* Interiors */}
         <section className="pt-10 mt-5">
-          <h2 className="text-3xl text-gray-600 font-semibold font-Ubuntu pb-5">
-            Interiors
-          </h2>
+          <h2 className="text-3xl text-gray-600 font-semibold font-Ubuntu pb-5">Interiors</h2>
           <div className="max-w-6xl mx-auto">
             <Interiors />
           </div>
@@ -157,20 +125,14 @@ export default function Home() {
 
         {/* Expert Options */}
         <section className="pt-10 mt-8">
-          <h2 className="text-3xl text-gray-600 font-semibold font-Ubuntu pb-5">
-            Expert Options
-          </h2>
+          <h2 className="text-3xl text-gray-600 font-semibold font-Ubuntu pb-5">Expert Options</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             <SmallCard
               img="https://i.pinimg.com/474x/43/4f/da/434fdaaba64ff8f974317f42773d012b.jpg"
               heading="Vastu"
               desc="desc"
             />
-            <SmallCard
-              img={threeDDesign}
-              heading="3D Exterior Design"
-              desc="desc"
-            />
+            <SmallCard img={threeDDesign} heading="3D Exterior Design" desc="desc" />
             <SmallCard
               img="https://i.pinimg.com/474x/c6/88/d2/c688d203778f78cb71962c57a0103c6b.jpg"
               heading="Interior"
@@ -181,15 +143,10 @@ export default function Home() {
 
         {/* Youtube Links */}
         <section className="pt-10 mt-5">
-          <h2 className="text-3xl text-gray-600 font-semibold font-Ubuntu pb-5">
-            Youtube links
-          </h2>
+          <h2 className="text-3xl text-gray-600 font-semibold font-Ubuntu pb-5">Youtube links</h2>
 
           <div className="flex py-8 px-4 space-x-5 overflow-scroll scrollbar-hide">
-            <Ytcard
-              link="https://www.youtube.com/embed/fo4oZ8xfCZk"
-              title="Village"
-            />
+            <Ytcard link="https://www.youtube.com/embed/fo4oZ8xfCZk" title="Village" />
             <Ytcard link="https://www.youtube.com/embed/fo4oZ8xfCZk" />
             <Ytcard link="https://www.youtube.com/embed/fo4oZ8xfCZk" />
             <Ytcard link="https://www.youtube.com/embed/fo4oZ8xfCZk" />

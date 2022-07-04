@@ -4,17 +4,17 @@ import {
   HeartIcon,
   PencilAltIcon,
   PencilIcon,
-  ShareIcon,
-} from "@heroicons/react/solid";
-import { useSession } from "next-auth/react";
-import Head from "next/head";
-import Image from "next/image";
-import { useState, useRef } from "react";
-import { useRecoilState } from "recoil";
-import { modalState } from "../atoms/modalAtom";
-import Header from "../components/Header";
-import ProductFeed from "../components/ProductFeed";
-import Upload from "../components/Upload";
+  ShareIcon
+} from '@heroicons/react/solid';
+import { useSession } from 'next-auth/react';
+import Head from 'next/head';
+import Image from 'next/image';
+import { useState, useRef } from 'react';
+import { useRecoilState } from 'recoil';
+import { modalState } from '../atoms/modalAtom';
+import Header from '../components/Header';
+import ProductFeed from '../components/ProductFeed';
+import Upload from '../components/Upload';
 
 function User() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -74,7 +74,9 @@ function User() {
         {/* Profile Pic */}
         <div>
           <div className="mx-auto mt-[10px] w-fit rounded-full border-8 border-gray-300">
-            <img
+            <Image
+              layout="fill"
+              alt="avatar"
               src={session?.user.image}
               className="rounded-full object-fit h-36 w-36"
               objectFit="contain"
@@ -84,13 +86,9 @@ function User() {
 
         {/* User Info */}
         <div className="flex flex-col items-center mx-auto mt-6">
-          <p className="font-Poppins font-bold text-3xl">
-            {session?.user.name}
-          </p>
+          <p className="font-Poppins font-bold text-3xl">{session?.user.name}</p>
 
-          <p className="font-Poppins font-bold text-sm text-gray-600">
-            {session?.user.email}
-          </p>
+          <p className="font-Poppins font-bold text-sm text-gray-600">{session?.user.email}</p>
         </div>
 
         {/* Options */}
@@ -102,8 +100,7 @@ function User() {
 
           <div
             className="flex items-center cursor-pointer active:text-blue-600 text-gray-500"
-            onClick={() => setOpen(true)}
-          >
+            onClick={() => setOpen(true)}>
             <CollectionIcon className="h-6 " />
             <p className="font-Ubuntu ml-2 text-lg">Create</p>
           </div>

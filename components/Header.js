@@ -1,19 +1,16 @@
-import {
-  GlobeAltIcon,
-  SearchIcon,
-  ShoppingCartIcon,
-} from "@heroicons/react/outline";
-import { useSession, signOut, signIn } from "next-auth/react";
-import Link from "next/link";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { useRecoilState } from "recoil";
-import { modalState } from "../atoms/modalAtom";
-import { selectItems } from "../slices/basketSlice";
-import { Menu, Transition } from "@headlessui/react";
-import { Fragment, useEffect, useRef } from "react";
-import { ChevronDownIcon } from "@heroicons/react/solid";
-import SearchBar from "./SearchBar";
+import { GlobeAltIcon, SearchIcon, ShoppingCartIcon } from '@heroicons/react/outline';
+import { useSession, signOut, signIn } from 'next-auth/react';
+import Link from 'next/link';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useRecoilState } from 'recoil';
+import { modalState } from '../atoms/modalAtom';
+import { selectItems } from '../slices/basketSlice';
+import { Menu, Transition } from '@headlessui/react';
+import { Fragment, useEffect, useRef } from 'react';
+import { ChevronDownIcon } from '@heroicons/react/solid';
+import SearchBar from './SearchBar';
+import Image from 'next/image';
 
 function Header() {
   const { data: session } = useSession();
@@ -21,7 +18,7 @@ function Header() {
 
   const items = useSelector(selectItems);
 
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState('');
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -40,9 +37,7 @@ function Header() {
                 className=""
               /> */}
               {/* Title */}
-              <p className="font-Poppins text-blue-800 text-lg cursor-pointer">
-                3Dhousemap
-              </p>
+              <p className="font-Poppins text-blue-800 text-lg cursor-pointer">3Dhousemap</p>
             </a>
           </Link>
         </div>
@@ -82,8 +77,9 @@ function Header() {
                   <Menu as="div" className="relative inline-block text-left">
                     <div>
                       <Menu.Button className="inline-flex w-full justify-center rounded-md bg-black bg-opacity-10 px-4 py-1 text-sm font-medium text-white hover:bg-opacity-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-">
-                        <img
-                          src={session.user.image}
+                        <Image
+                          alt="avatar"
+                          src={session.user.image || 'https://via.placeholder.com/150'}
                           className="rounded-full h-8 w-8"
                         />
                         <ChevronDownIcon
@@ -99,8 +95,7 @@ function Header() {
                       enterTo="transform opacity-100 scale-100"
                       leave="transition ease-in duration-75"
                       leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
-                    >
+                      leaveTo="transform opacity-0 scale-95">
                       <Menu.Items className="flex absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                         <div className="flex flex-col items-center px-1 py-1 ">
                           <Menu.Item>
@@ -116,8 +111,7 @@ function Header() {
                           <Menu.Item>
                             <button
                               className="hover:bg-gray-300 py-2 w-52 px-1 rounded-md hover:text-blue-600"
-                              onClick={signOut}
-                            >
+                              onClick={signOut}>
                               Signout
                             </button>
                           </Menu.Item>
@@ -127,9 +121,7 @@ function Header() {
                   </Menu>
                   <div className="flex flex-col">
                     <p className="text-xs ml-3">Hello</p>
-                    <p className="text-xs ml-3">
-                      {session ? ` ${session.user.name}` : "Sign in"}
-                    </p>
+                    <p className="text-xs ml-3">{session ? ` ${session.user.name}` : 'Sign in'}</p>
                   </div>
                 </div>
 
@@ -145,8 +137,7 @@ function Header() {
             ) : (
               <button
                 className="text-sm text-blue-600 font-Poppins font-bold hover:shadow-md hover:shadow-gray-700 px-4 py-2 rounded-lg hover:text-white hover:bg-blue-600 border-[1px] border-gray-700"
-                onClick={signIn}
-              >
+                onClick={signIn}>
                 Signin
               </button>
             )}
